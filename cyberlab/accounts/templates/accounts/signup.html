@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+    .helptext, .helptext ul {
+        display: none;
+    }
+</style>
+
+<style>
+    .helptext, .helptext ul {
+        display: none;
+    }
+
+    .password-rules {
+        font-size: 0.9rem;
+        color: #4a5a6a;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+</style>
+
+{% block content %}
+<div class="auth-container">
+    <h2>Create an Account</h2>
+
+
+    <form method="POST" class="auth-form">
+    {% csrf_token %}
+
+    <p>{{ form.username.label_tag }} {{ form.username }}</p>
+    <ul class="username-rules">
+        <li>Your username can’t contain any special characters.</li>
+    </ul>
+    <p>{{ form.email.label_tag }} {{ form.email }}</p>
+
+    <p>{{ form.password1.label_tag }} {{ form.password1 }}</p>
+
+    <ul class="password-rules">
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+    </ul>
+
+    <p>{{ form.password2.label_tag }} {{ form.password2 }}</p>
+
+    <button type="submit" class="auth-btn">Sign Up</button>
+</form>
+
+</div>
+{% endblock %}
