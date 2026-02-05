@@ -1,4 +1,3 @@
-#testdelete this line please
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .info import SignUpForm
