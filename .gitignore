@@ -1,3 +1,6 @@
-*.pyc files
-__pycache__/ directories
-.env files
+.env
+.venv
+.sqlite3
+*/__pycache__/
+**/__pycache__/
+*.pyc
