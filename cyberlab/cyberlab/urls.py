@@ -24,4 +24,6 @@ urlpatterns = [
     path('', core_views.home, name='home'),
     path('signup/', account_views.signup_view, name='signup'),
     path('login/', account_views.login_view, name='login'),
+    #This connects to account_view in Views.py. 
+    path('account/', account_views.account_view, name='account'),
 ]
