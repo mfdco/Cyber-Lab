@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from .info import SignUpForm
 from django.http import JsonResponse
 
@@ -14,8 +14,6 @@ def signup_view(request):
         form = SignUpForm()
 
     return render(request, "accounts/signup.html", {"form": form})
-def login_view(request):
-    return render(request, "accounts/login.html")
 
     
     
@@ -30,4 +28,16 @@ def account_view(request):
         "username": user.username,
         "email": user.email,
     })
-    
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username", "")
+        password = request.POST.get("password", "")
+        user = authenticate(request, username=username, password=password)
+         
+        if user is not None:
+            login(request, user)
+            print(f"User logged in: {user.username}")
+            #change the account in the statement below to the html you make.
+            return redirect("account")
+        return render(request, "accounts/login.html", {"error": "Invalid username or password"})
+    return render(request ,"accounts/login.html")
