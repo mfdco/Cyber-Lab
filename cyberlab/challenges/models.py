@@ -1,3 +1,12 @@
 from django.db import models
 
-# Create your models here.
+class Problems(models.Model):
+    
+    problem_title = models.CharField(max_length = 150)
+    
+    # these flags will be stored in the database
+    hashed_flags = models.CharField(max_length = 255)
+
+    # these flags will be used as temporary input for the admin page
+    flag = model.CharField(max_length = 255)
+

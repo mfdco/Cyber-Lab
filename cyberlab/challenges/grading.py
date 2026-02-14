@@ -1,8 +1,6 @@
-def check_flag(check, answers):
+# importing django hashing (check_password)
+from django.contrib.auth.hashers import check_password
 
-    for i in range(len(answers)):
+def check_flag(check, hashed_flag):
 
-        if check == answers[i]:
-            return True
-        else :
-            return False
+    return check_password(check, stored_hash)
