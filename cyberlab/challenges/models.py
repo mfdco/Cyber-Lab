@@ -8,5 +8,5 @@ class Problems(models.Model):
     hashed_flags = models.CharField(max_length = 255)
 
     # these flags will be used as temporary input for the admin page
-    flag = model.CharField(max_length = 255)
+    flag = models.CharField(max_length = 255)
 
