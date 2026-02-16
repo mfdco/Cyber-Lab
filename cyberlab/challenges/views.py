@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Submission
 from .grading import *
 
 def submission_check(request):
@@ -12,3 +13,25 @@ def submission_check(request):
             return HttpResponse("Yippy! You've found the correct flag.")
         else :
             return HttpResponse("Wrong flag, keep looking.")
+
+def submission(request, problem_id):
+    
+    problem = Problem.objects.get(id = problem_id)
+
+    if request.method == "POST":
+    
+        submitted_flag = request.POST["flag"]
+
+        correct = check_flag(submitted_flag, problem.hashed_flag)
+
+        Submission.objects.create(
+            user = request.user,
+            problem = problem,
+            submitted_flag = submitted_flag,
+            is_correct = correct    
+        )
+
+        if correct:
+            return HttpResponse("Correct")
+        else :
+            return HttpResponse("Incorrect")

@@ -1,12 +1,17 @@
 from django.contrib import admin
-from .models import Problems
+from .models import Problems, Submission
 from django.contrib.auth.hashers import make_password
 
+admin.site.register(Problems)
+admin.site.register(Submission)
 
 class ProblemAdmin(admin.ModelAdmin):
     
+    list_display = ('title', 'hashed_flag')
+    search_fields = ('title',)
+    
     # hide the hashed flag from admin page
-    exclude = ("hased_flag",)
+    #  exclude = ("hased_flag",)
 
     # this method will be automatically called by django whenever admin saves a model
     # request = takes HTTP request from browser
