@@ -133,3 +133,263 @@
     color: #4a5a6a;
     margin-bottom: 15px;
 }
+
+/* ===== DASHBOARD ===== */
+
+.dashboard-body {
+    background: #eef2f7;
+    margin: 0;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    width: 100%;
+    height: 60px;
+    padding: 0 32px;
+    background: #0a3d62;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.logo-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+}
+
+.header-username {
+    color: #dfe7f1;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgba(255,255,255,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* Dashboard Layout */
+.dashboard-layout {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #f5f7fa;
+    border-right: 1px solid #e2e6ea;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    color: #4a5a6a;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.sidebar-link:hover:not(.disabled) {
+    background: #e8edf3;
+}
+
+.sidebar-link.active {
+    border-left-color: #0a3d62;
+    background: #dfe7f1;
+    color: #0a3d62;
+    font-weight: 600;
+}
+
+.sidebar-link.disabled {
+    color: #b2bec3;
+    pointer-events: none;
+    cursor: default;
+}
+
+.sidebar-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.dashboard-main {
+    flex: 1;
+    padding: 48px 20px;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.roadmap {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+/* Section Pack */
+.path-pack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pack-header {
+    width: 100%;
+    background: #0a3d62;
+    color: white;
+    padding: 18px 24px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+}
+
+.locked-pack-header {
+    background: #8395a7;
+}
+
+.pack-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.pack-header h2 {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0 0 4px 0;
+}
+
+.pack-header p {
+    font-size: 0.83rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Path Track */
+.path-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.path-step {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.path-step.left {
+    padding-right: 150px;
+}
+
+.path-step.right {
+    padding-left: 150px;
+}
+
+/* Dashed connector between nodes */
+.v-connector {
+    width: 4px;
+    height: 48px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #b2bec3 0,
+        #b2bec3 6px,
+        transparent 6px,
+        transparent 14px
+    );
+    border-radius: 2px;
+}
+
+/* Nodes */
+.path-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.node-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 4px solid transparent;
+    transition: transform 0.15s;
+}
+
+/* Available node — glowing, clickable */
+.path-node.available .node-circle {
+    background: #0a3d62;
+    color: #f9ca24;
+    border-color: #3498db;
+    box-shadow: 0 0 0 6px rgba(52, 152, 219, 0.2);
+    animation: node-pulse 2.2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.path-node.available .node-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Locked node */
+.path-node.locked .node-circle {
+    background: #dfe7f1;
+    color: #8395a7;
+    border-color: #c9d6e3;
+    cursor: not-allowed;
+}
+
+.node-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: center;
+    max-width: 96px;
+    line-height: 1.3;
+}
+
+.path-node.available .node-label {
+    color: #0a3d62;
+}
+
+.path-node.locked .node-label {
+    color: #8395a7;
+}
+
+@keyframes node-pulse {
+    0%   { box-shadow: 0 0 0 6px rgba(52, 152, 219, 0.2); }
+    50%  { box-shadow: 0 0 0 12px rgba(52, 152, 219, 0.06); }
+    100% { box-shadow: 0 0 0 6px rgba(52, 152, 219, 0.2); }
+}
