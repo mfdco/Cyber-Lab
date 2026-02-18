@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CyberLabs</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <a href="{% url 'dashboard' %}" class="logo-link">CyberLabs</a>
+        <div class="header-user">
+            <span class="header-username">{{ user.username }}</span>
+        </div>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="{% url 'dashboard' %}" class="sidebar-link active">
+                    <span class="sidebar-icon">&#128506;</span> Learning Paths
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#128295;</span> Tools
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#9876;</span> Challenges
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#127942;</span> Leaderboard
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#128100;</span> Profile
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Roadmap -->
+        <main class="dashboard-main">
+            <div class="roadmap">
+
+                <!-- Section 1 -->
+                <div class="path-pack">
+                    <div class="pack-header">
+                        <span class="pack-label">SECTION 1</span>
+                        <h2>Foundations of Cybersecurity</h2>
+                        <p>Learn the core concepts every security professional needs to know.</p>
+                    </div>
+
+                    <div class="path-track">
+                        <div class="path-step left">
+                            <div class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">Intro to CyberSec</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step right">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Threats &amp; Attacks</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step left">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Defense Basics</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step right">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Security Mindset</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="path-pack">
+                    <div class="pack-header locked-pack-header">
+                        <span class="pack-label">SECTION 2</span>
+                        <h2>Network Security</h2>
+                        <p>Understand how networks work and how to defend them.</p>
+                    </div>
+
+                    <div class="path-track">
+                        <div class="path-step left">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Network Fundamentals</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step right">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Firewalls &amp; IDS</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step left">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">VPNs &amp; Encryption</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="path-pack">
+                    <div class="pack-header locked-pack-header">
+                        <span class="pack-label">SECTION 3</span>
+                        <h2>Ethical Hacking</h2>
+                        <p>Think like an attacker to build stronger defenses.</p>
+                    </div>
+
+                    <div class="path-track">
+                        <div class="path-step left">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Reconnaissance</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step right">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Exploitation Basics</span>
+                            </div>
+                        </div>
+                        <div class="v-connector"></div>
+                        <div class="path-step left">
+                            <div class="path-node locked">
+                                <div class="node-circle">&#128274;</div>
+                                <span class="node-label">Penetration Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
