@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from core import views as core_views
 from accounts import views as account_views
+from dashboard import views as dashboard_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', core_views.home, name='home'),
     path('signup/', account_views.signup_view, name='signup'),
     path('login/', account_views.login_view, name='login'),
-    #This connects to account_view in Views.py. 
     path('account/', account_views.account_view, name='account'),
+    path('dashboard/', dashboard_views.dashboard_view, name='dashboard'),
 ]

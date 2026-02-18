@@ -36,8 +36,6 @@ def login_view(request):
          
         if user is not None:
             login(request, user)
-            print(f"User logged in: {user.username}")
-            #change the account in the statement below to the html you make.
-            return redirect("account")
+            return redirect("dashboard")
         return render(request, "accounts/login.html", {"error": "Invalid username or password"})
     return render(request ,"accounts/login.html")
