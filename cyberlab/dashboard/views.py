@@ -6,3 +6,10 @@ def dashboard_view(request):
         return redirect('login')
 
     return render(request, 'dashboard/dashboard.html', {'user': request.user})
+
+
+def profile_view(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    return render(request, 'dashboard/profile.html', {'user': request.user})
