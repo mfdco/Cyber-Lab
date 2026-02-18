@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | CyberLabs</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <a href="{% url 'dashboard' %}" class="logo-link">CyberLabs</a>
+        <div class="header-user">
+            <span class="header-username">{{ user.username }}</span>
+        </div>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="{% url 'dashboard' %}" class="sidebar-link">
+                    <span class="sidebar-icon">&#128506;</span> Learning Paths
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#128295;</span> Tools
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#9876;</span> Challenges
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#127942;</span> Leaderboard
+                </a>
+                <a href="{% url 'profile' %}" class="sidebar-link active">
+                    <span class="sidebar-icon">&#128100;</span> Profile
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Profile Content -->
+        <main class="dashboard-main">
+            <div class="profile-container">
+
+                <!-- Avatar + name hero -->
+                <div class="profile-hero">
+                    <div class="profile-avatar">{{ user.username|slice:":1"|upper }}</div>
+                    <h1 class="profile-name">{{ user.username }}</h1>
+                    <p class="profile-since">Member since {{ user.date_joined|date:"F j, Y" }}</p>
+                </div>
+
+                <!-- Account Details -->
+                <div class="profile-section">
+                    <h2 class="profile-section-title">Account Details</h2>
+                    <div class="profile-card">
+                        <div class="profile-row">
+                            <span class="profile-label">Username</span>
+                            <span class="profile-value">{{ user.username }}</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-label">Email</span>
+                            <span class="profile-value">{{ user.email|default:"Not set" }}</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-label">Last Login</span>
+                            <span class="profile-value">{{ user.last_login|date:"F j, Y \a\t g:i a"|default:"Never" }}</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-label">Account Status</span>
+                            <span class="profile-value">
+                                {% if user.is_active %}
+                                    <span class="profile-badge active-badge">&#10003; Active</span>
+                                {% else %}
+                                    <span class="profile-badge inactive-badge">Inactive</span>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="profile-section">
+                    <h2 class="profile-section-title">Security</h2>
+                    <div class="profile-card">
+                        <div class="profile-row">
+                            <div>
+                                <span class="profile-label">Password</span>
+                                <p class="profile-sublabel">Passwords are encrypted and cannot be displayed.</p>
+                            </div>
+                            <a href="#" class="profile-action-btn disabled-btn">Change Password</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
