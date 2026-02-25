@@ -19,6 +19,7 @@ from django.urls import path
 from core import views as core_views
 from accounts import views as account_views
 from dashboard import views as dashboard_views
+from challenges import views as challenge_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     path('account/', account_views.account_view, name='account'),
     path('dashboard/', dashboard_views.dashboard_view, name='dashboard'),
     path('profile/', dashboard_views.profile_view, name='profile'),
+    path('challenge/<int:problem_id>/', challenge_views.challenge_view, name='challenge'),
 ]
