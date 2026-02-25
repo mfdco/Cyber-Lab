@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge | CyberLabs</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <a href="{% url 'dashboard' %}" class="logo-link">CyberLabs</a>
+        <div class="header-user">
+            <span class="header-username">{{ user.username }}</span>
+        </div>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="{% url 'dashboard' %}" class="sidebar-link">
+                    <span class="sidebar-icon">&#128506;</span> Learning Paths
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#128295;</span> Tools
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#9876;</span> Challenges
+                </a>
+                <a href="#" class="sidebar-link disabled">
+                    <span class="sidebar-icon">&#127942;</span> Leaderboard
+                </a>
+                <a href="{% url 'profile' %}" class="sidebar-link">
+                    <span class="sidebar-icon">&#128100;</span> Profile
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Challenge Content -->
+        <main class="dashboard-main">
+            <div class="challenge-container">
+
+                <!-- Back link -->
+                <a href="{% url 'dashboard' %}" class="challenge-back">&#8592; Back to Learning Paths</a>
+
+                <!-- Challenge Header -->
+                <div class="challenge-header-card">
+                    <span class="challenge-section-label">SECTION 1 &mdash; LEVEL 1</span>
+                    <h1 class="challenge-title">Intro to CyberSec</h1>
+                    <p class="challenge-desc">
+                        Welcome to your first challenge! Cybersecurity is the practice of protecting systems,
+                        networks, and programs from digital attacks. In this challenge, you will locate a hidden
+                        flag that has been placed in plain sight. Flags follow the format
+                        <code class="flag-format">flag{...}</code>.
+                    </p>
+                </div>
+
+                <!-- Challenge Body -->
+                <div class="challenge-body-card">
+                    <h2 class="challenge-body-title">Your Mission</h2>
+                    <p class="challenge-body-text">
+                        Every security professional needs to recognise when something is hiding in plain sight.
+                        The flag for this challenge has been encoded in the description below. Read carefully,
+                        then click <strong>Reveal Flag</strong> when you are ready to confirm your answer.
+                    </p>
+
+                    <div class="challenge-clue-box">
+                        <p>
+                            Th1s platform was built for people who look closer than everyone else.
+                            Every skill you build here 1s another layer of armour.
+                            Never underestimate th3 value of reading carefully &mdash;
+                            most attackers hide their work in plain text.
+                            The analyst who spots the f1rs7 anomaly in a log is the one who stops the breach.
+                            A sharp eye never misses a FlA6 when it is hiding right in front of them.
+                        </p>
+                    </div>
+
+                    <!-- Reveal Flag Button + Hidden Flag -->
+                    <div class="reveal-section">
+                        <button id="reveal-btn" class="reveal-btn" onclick="revealFlag()">
+                            &#128065; Reveal Flag
+                        </button>
+                        <div id="flag-display" class="flag-display hidden">
+                            <span class="flag-text">flag{Th1s_1s_th3_f1rs7_FlA6}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flag Submission -->
+                <div class="challenge-submit-card">
+                    <h2 class="challenge-body-title">Submit Your Flag</h2>
+                    <p class="challenge-body-text">Enter the flag you found and press <strong>Enter</strong> or click Submit.</p>
+
+                    <form id="flag-form" method="POST" action="{% url 'challenge' 1 %}">
+                        {% csrf_token %}
+                        <div class="flag-input-row">
+                            <input
+                                type="text"
+                                id="flag-input"
+                                name="flag"
+                                class="flag-input"
+                                placeholder="flag{...}"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+                            <button type="submit" class="submit-flag-btn">Submit</button>
+                        </div>
+                    </form>
+
+                    <!-- Feedback -->
+                    {% if result == "correct" %}
+                        <div class="feedback-banner feedback-correct">
+                            &#10003; Correct! Well done &mdash; you found the flag!
+                        </div>
+                    {% elif result == "incorrect" %}
+                        <div class="feedback-banner feedback-incorrect">
+                            &#10007; Incorrect flag. Check your spelling and try again.
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function revealFlag() {
+            const display = document.getElementById('flag-display');
+            const btn = document.getElementById('reveal-btn');
+            if (display.classList.contains('hidden')) {
+                display.classList.remove('hidden');
+                btn.textContent = '\uD83D\uDC41 Hide Flag';
+            } else {
+                display.classList.add('hidden');
+                btn.textContent = '\uD83D\uDC41 Reveal Flag';
+            }
+        }
+    </script>
+
+</body>
+</html>
