@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
-from .models import Submission
+from .models import Submission, Problems
 from .grading import *
 
 # Level 1 flag — hashed once at startup so check_flag can verify it
@@ -20,6 +20,17 @@ def challenge_view(request, problem_id):
             result = "correct"
         else:
             result = "incorrect"
+
+        problem, _ = Problems.objects.get_or_create(
+            id=1,
+            defaults={'problem_title': 'Intro to CyberSec', 'flag': ''}
+        )
+        Submission.objects.create(
+            user=request.user,
+            problem=problem,
+            flag_submitted=submitted,
+            correct=(result == "correct"),
+        )
 
     return render(request, 'challenges/challenge.html', {
         'user': request.user,

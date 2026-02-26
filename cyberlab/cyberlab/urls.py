@@ -30,5 +30,6 @@ urlpatterns = [
     path('account/', account_views.account_view, name='account'),
     path('dashboard/', dashboard_views.dashboard_view, name='dashboard'),
     path('profile/', dashboard_views.profile_view, name='profile'),
+    path('history/', dashboard_views.history_view, name='history'),
     path('challenge/<int:problem_id>/', challenge_views.challenge_view, name='challenge'),
 ]
