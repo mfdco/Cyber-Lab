@@ -6,6 +6,16 @@ from django.utils import timezone
 class Problems(models.Model):
     
     problem_title = models.CharField(max_length = 150)
+
+    section = models.CharField(max_length = 150)
+
+    problem_number = models.PositiveIntegerField(default = 1)
+
+    description = models.TextField()
+
+    puzzle_content = models.TextField()
+
+    hints = models.TextField()
     
     # these flags will be stored in the database
     hashed_flags = models.CharField(max_length = 255, editable = False)
