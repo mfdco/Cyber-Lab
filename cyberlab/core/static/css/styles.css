@@ -9,18 +9,23 @@
 /* Navbar */
 .navbar {
     width: 100%;
-    padding: 15px 40px;
-    background: #f5f7fa;
+    padding: 16px 48px;
+    background: #0d1b2a;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e2e6ea;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .logo {
     font-size: 1.6rem;
-    font-weight: 600;
-    color: #2d3e50;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.logo-accent {
+    color: #f9ca24;
 }
 
 /* Buttons */
@@ -29,64 +34,344 @@
     padding: 10px 20px;
     font-size: 0.95rem;
     font-weight: 500;
+    border-radius: 10px;
+    transition: 0.2s ease;
+    display: inline-block;
 }
 
 .soft-btn {
-    background: #dfe7f1;
-    color: #2d3e50;
-    border-radius: 10px;
-    transition: 0.2s ease;
+    background: rgba(255,255,255,0.1);
+    color: #dfe7f1;
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
 .soft-btn:hover {
-    background: #c9d6e3;
+    background: rgba(255,255,255,0.18);
+    color: #ffffff;
+}
+
+/* CTA Buttons */
+.cta-primary {
+    background: #f9ca24;
+    color: #0d1b2a;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 30px;
+    border-radius: 10px;
+}
+
+.cta-primary:hover {
+    background: #f0be10;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(249, 202, 36, 0.35);
+}
+
+.cta-secondary {
+    background: transparent;
+    color: #dfe7f1;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.cta-secondary:hover {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
 }
 
 /* Hero Section */
 .hero {
-    padding: 80px 40px;
+    padding: 100px 40px 90px;
     text-align: center;
-    background: #eef2f7;
+    background: #0d1b2a;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(52, 152, 219, 0.12) 0%, transparent 70%);
+}
+
+.hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f9ca24;
+    background: rgba(249, 202, 36, 0.1);
+    border: 1px solid rgba(249, 202, 36, 0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: #2d3e50;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.hero-accent {
+    color: #f9ca24;
 }
 
 .hero p {
     font-size: 1.1rem;
-    color: #4a5a6a;
+    color: #8395a7;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 36px;
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 
 /* Features */
 .features {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    padding: 60px 40px;
+    gap: 24px;
+    padding: 72px 48px;
+    background: #f5f8fc;
+    flex-wrap: wrap;
 }
 
 .feature-card {
     background: #ffffff;
-    padding: 25px;
-    width: 260px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 32px 28px;
+    width: 280px;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
     text-align: center;
+    border: 1px solid #e8edf3;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+    display: block;
 }
 
 .feature-card h3 {
     margin-bottom: 10px;
-    color: #2d3e50;
+    color: #0d1b2a;
+    font-size: 1.1rem;
 }
 
 .feature-card p {
     color: #4a5a6a;
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
 
-/* Auth Pages (Signup + Login) */
+/* Home Bottom CTA */
+.home-cta {
+    text-align: center;
+    padding: 80px 40px;
+    background: #0d1b2a;
+}
+
+.home-cta h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.home-cta p {
+    font-size: 1rem;
+    color: #8395a7;
+    margin-bottom: 28px;
+}
+
+/* ===== AUTH PAGES (Signup + Login) ===== */
+
+.signup-page,
+.login-page {
+    min-height: calc(100vh - 57px);
+    background: #0d1b2a;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(52, 152, 219, 0.1) 0%, transparent 65%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+}
+
+.auth-card {
+    background: #ffffff;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.auth-card-header {
+    background: #0a3d62;
+    padding: 30px 36px 24px;
+}
+
+.auth-card-header h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    font-weight: 700;
+}
+
+.auth-card-header p {
+    font-size: 0.9rem;
+    color: #8ab4cc;
+    margin: 0;
+}
+
+.auth-form {
+    padding: 28px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Field groups */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field-group label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #2d3e50;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.field-group input {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 9px;
+    border: 1.5px solid #d1d9e3;
+    font-size: 0.95rem;
+    color: #2d3e50;
+    background: #f9fbfd;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+}
+
+.field-group input:focus {
+    border-color: #0a3d62;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(10, 61, 98, 0.1);
+}
+
+.field-group.has-error input {
+    border-color: #e74c3c;
+    background: #fff8f8;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Inline error messages */
+.field-error {
+    font-size: 0.82rem;
+    color: #e74c3c;
+    font-weight: 600;
+    min-height: 0;
+    display: block;
+}
+
+.field-error:empty {
+    display: none;
+}
+
+/* Field hint */
+.field-hint {
+    font-size: 0.78rem;
+    color: #8395a7;
+    line-height: 1.4;
+}
+
+/* Password checklist */
+.pw-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 2px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pw-checklist li {
+    font-size: 0.8rem;
+    color: #8395a7;
+    padding-left: 20px;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.pw-checklist li::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #c9d6e3;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.pw-checklist li.passed {
+    color: #27ae60;
+}
+
+.pw-checklist li.passed::before {
+    content: "✓";
+    color: #27ae60;
+}
+
+/* Submit button */
+.auth-submit {
+    width: 100%;
+    margin-top: 4px;
+    padding: 13px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+/* Switch link (login / signup) */
+.auth-switch {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #8395a7;
+    margin: 0;
+}
+
+.auth-switch a {
+    color: #0a3d62;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* Legacy classes kept for login page compatibility */
 .auth-container {
     max-width: 400px;
     margin: 80px auto;
@@ -100,15 +385,6 @@
 .auth-container h2 {
     margin-bottom: 20px;
     color: #2d3e50;
-}
-
-.auth-form input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
 }
 
 .auth-btn {

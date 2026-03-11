@@ -1,50 +1,202 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<style>
-    .helptext, .helptext ul {
-        display: none;
-    }
-</style>
-
-<style>
-    .helptext, .helptext ul {
-        display: none;
-    }
-
-    .password-rules {
-        font-size: 0.9rem;
-        color: #4a5a6a;
-        margin-bottom: 15px;
-        text-align: left;
-    }
-</style>
+{% block title %}Sign Up | CyberLabs{% endblock %}
 
 {% block content %}
-<div class="auth-container">
-    <h2>Create an Account</h2>
+<div class="signup-page">
+    <div class="auth-card">
+        <div class="auth-card-header">
+            <h2>Create your account</h2>
+            <p>Join CyberLabs and start hacking.</p>
+        </div>
 
+        <form method="POST" class="auth-form" id="signup-form" novalidate>
+            {% csrf_token %}
 
-    <form method="POST" class="auth-form">
-    {% csrf_token %}
+            <div class="field-group {% if form.username.errors %}has-error{% endif %}" id="field-username">
+                <label for="id_username">Username</label>
+                {{ form.username }}
+                <span class="field-error" id="error-username">
+                    {% if form.username.errors %}{{ form.username.errors.0 }}{% endif %}
+                </span>
+                <span class="field-hint">Letters and numbers only — no spaces or special characters.</span>
+            </div>
 
-    <p>{{ form.username.label_tag }} {{ form.username }}</p>
-    <ul class="username-rules">
-        <li>Your username can’t contain any special characters.</li>
-    </ul>
-    <p>{{ form.email.label_tag }} {{ form.email }}</p>
+            <div class="field-group {% if form.email.errors %}has-error{% endif %}" id="field-email">
+                <label for="id_email">Email</label>
+                {{ form.email }}
+                <span class="field-error" id="error-email">
+                    {% if form.email.errors %}{{ form.email.errors.0 }}{% endif %}
+                </span>
+            </div>
 
-    <p>{{ form.password1.label_tag }} {{ form.password1 }}</p>
+            <div class="field-group {% if form.password1.errors %}has-error{% endif %}" id="field-password1">
+                <label for="id_password1">Password</label>
+                {{ form.password1 }}
+                <span class="field-error" id="error-password1">
+                    {% if form.password1.errors %}{{ form.password1.errors.0 }}{% endif %}
+                </span>
+                <ul class="pw-checklist" id="pw-checklist">
+                    <li id="check-length">At least 8 characters</li>
+                    <li id="check-common">Not a commonly used password</li>
+                </ul>
+            </div>
 
-    <ul class="password-rules">
-        <li>Your password must contain at least 8 characters.</li>
-        <li>Your password can’t be a commonly used password.</li>
-    </ul>
+            <div class="field-group {% if form.password2.errors %}has-error{% endif %}" id="field-password2">
+                <label for="id_password2">Confirm Password</label>
+                {{ form.password2 }}
+                <span class="field-error" id="error-password2">
+                    {% if form.password2.errors %}{{ form.password2.errors.0 }}{% endif %}
+                </span>
+            </div>
 
-    <p>{{ form.password2.label_tag }} {{ form.password2 }}</p>
+            <button type="submit" class="btn cta-primary auth-submit">Create Account</button>
 
-    <button type="submit" class="auth-btn">Sign Up</button>
-</form>
-
+            <p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
 </div>
+
+<script>
+(function () {
+    const COMMON_PASSWORDS = ["password", "12345678", "qwerty", "letmein", "abc123", "admin"];
+
+    const usernameInput  = document.getElementById("id_username");
+    const emailInput     = document.getElementById("id_email");
+    const password1Input = document.getElementById("id_password1");
+    const password2Input = document.getElementById("id_password2");
+    const form           = document.getElementById("signup-form");
+
+    function setError(fieldId, errorId, msg) {
+        const group = document.getElementById(fieldId);
+        const span  = document.getElementById(errorId);
+        span.textContent = msg;
+        if (msg) {
+            group.classList.add("has-error");
+        } else {
+            group.classList.remove("has-error");
+        }
+    }
+
+    function clearError(fieldId, errorId) {
+        setError(fieldId, errorId, "");
+    }
+
+    // --- Username live validation ---
+    usernameInput.addEventListener("input", function () {
+        const val = this.value;
+        if (!val) return clearError("field-username", "error-username");
+        if (!/^[a-zA-Z0-9]+$/.test(val)) {
+            setError("field-username", "error-username", "Username can only contain letters and numbers.");
+        } else {
+            clearError("field-username", "error-username");
+        }
+    });
+
+    // --- Email validation on blur ---
+    emailInput.addEventListener("blur", function () {
+        const val = this.value.trim();
+        if (!val) return clearError("field-email", "error-email");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+            setError("field-email", "error-email", "Enter a valid email address.");
+        } else {
+            clearError("field-email", "error-email");
+        }
+    });
+
+    // --- Password live checklist ---
+    function updateChecklist() {
+        const val = password1Input.value;
+
+        const checkLength = document.getElementById("check-length");
+        const checkCommon = document.getElementById("check-common");
+
+        if (val.length >= 8) {
+            checkLength.classList.add("passed");
+        } else {
+            checkLength.classList.remove("passed");
+        }
+
+        if (val && !COMMON_PASSWORDS.includes(val.toLowerCase())) {
+            checkCommon.classList.add("passed");
+        } else {
+            checkCommon.classList.remove("passed");
+        }
+
+        // Clear server error as user types
+        clearError("field-password1", "error-password1");
+    }
+
+    password1Input.addEventListener("input", function () {
+        updateChecklist();
+        // Re-run confirm check if already filled
+        if (password2Input.value) validateConfirm();
+    });
+
+    // --- Confirm password live check ---
+    function validateConfirm() {
+        if (!password2Input.value) return clearError("field-password2", "error-password2");
+        if (password2Input.value !== password1Input.value) {
+            setError("field-password2", "error-password2", "Passwords do not match.");
+        } else {
+            clearError("field-password2", "error-password2");
+        }
+    }
+
+    password2Input.addEventListener("input", validateConfirm);
+
+    // --- Form submit: block if client-side errors exist ---
+    form.addEventListener("submit", function (e) {
+        let blocked = false;
+
+        // Username
+        const uval = usernameInput.value;
+        if (!uval) {
+            setError("field-username", "error-username", "Username is required.");
+            blocked = true;
+        } else if (!/^[a-zA-Z0-9]+$/.test(uval)) {
+            setError("field-username", "error-username", "Username can only contain letters and numbers.");
+            blocked = true;
+        }
+
+        // Email
+        const eval_ = emailInput.value.trim();
+        if (!eval_) {
+            setError("field-email", "error-email", "Email is required.");
+            blocked = true;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eval_)) {
+            setError("field-email", "error-email", "Enter a valid email address.");
+            blocked = true;
+        }
+
+        // Password
+        const pval = password1Input.value;
+        if (!pval) {
+            setError("field-password1", "error-password1", "Password is required.");
+            blocked = true;
+        } else if (pval.length < 8) {
+            setError("field-password1", "error-password1", "Password must be at least 8 characters.");
+            blocked = true;
+        } else if (COMMON_PASSWORDS.includes(pval.toLowerCase())) {
+            setError("field-password1", "error-password1", "Password is too common. Choose a stronger one.");
+            blocked = true;
+        }
+
+        // Confirm
+        if (!password2Input.value) {
+            setError("field-password2", "error-password2", "Please confirm your password.");
+            blocked = true;
+        } else if (password2Input.value !== pval) {
+            setError("field-password2", "error-password2", "Passwords do not match.");
+            blocked = true;
+        }
+
+        if (blocked) e.preventDefault();
+    });
+
+    // Initialise checklist state if page reloaded with values
+    if (password1Input.value) updateChecklist();
+})();
+</script>
 {% endblock %}

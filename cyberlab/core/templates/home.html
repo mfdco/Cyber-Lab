@@ -6,27 +6,41 @@
 
 {% block content %}
 <section class="hero">
-    <h1>Welcome to CyberLabs</h1>
-    <p>A hands-on cybersecurity learning lab. Progress through levels, find flags, and build real skills.</p>
+    <div class="hero-inner">
+        <div class="hero-badge">Cybersecurity Training Lab</div>
+        <h1>Learn by <span class="hero-accent">hacking</span>.<br>Level up your skills.</h1>
+        <p>A hands-on cybersecurity learning lab. Progress through structured challenges, capture flags, and build real-world skills — all in your browser.</p>
+        <div class="hero-cta">
+            <a href="{% url 'signup' %}" class="btn cta-primary">Get Started Free</a>
+            <a href="{% url 'login' %}" class="btn cta-secondary">Login</a>
+        </div>
+    </div>
 </section>
 
 
 <section class="features">
     <div class="feature-card">
+        <div class="feature-icon">🎯</div>
         <h3>Level-Based Challenges</h3>
-        <p>Work through structured cybersecurity levels that grow in difficulty as your skills improve.</p>
+        <p>Work through structured cybersecurity challenges that grow in difficulty as your skills improve.</p>
     </div>
 
-
     <div class="feature-card">
+        <div class="feature-icon">🚩</div>
         <h3>Capture the Flag</h3>
-        <p>Each level hides a flag. Find it, submit it, and unlock the next challenge to keep progressing.</p>
+        <p>Each challenge hides a flag. Find it, submit it, and unlock the next level to keep progressing.</p>
     </div>
 
-
     <div class="feature-card">
+        <div class="feature-icon">🛠️</div>
         <h3>Built-in Tools</h3>
         <p>Use browser-based tools designed for the lab — no local setup or installs required.</p>
     </div>
+</section>
+
+<section class="home-cta">
+    <h2>Ready to start?</h2>
+    <p>Create a free account and begin your first challenge in minutes.</p>
+    <a href="{% url 'signup' %}" class="btn cta-primary">Create Account</a>
 </section>
 {% endblock %}
