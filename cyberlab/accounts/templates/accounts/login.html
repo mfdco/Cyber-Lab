@@ -1,15 +1,71 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
-<div class="auth-container">
-    <h2>Login</h2>
+{% block title %}Login | CyberLabs{% endblock %}
 
-    <form method="POST" class="auth-form">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit" class="auth-btn">Login</button>
-    </form>
+{% block content %}
+<div class="login-page">
+    <div class="auth-card">
+        <div class="auth-card-header">
+            <h2>Welcome back</h2>
+            <p>Log in to continue your progress.</p>
+        </div>
+
+        <form method="POST" class="auth-form" id="login-form" novalidate>
+            {% csrf_token %}
+
+            <div class="field-group {% if error %}has-error{% endif %}" id="field-username">
+                <label for="id_username">Username</label>
+                <input type="text" name="username" id="id_username" autocomplete="username">
+                <span class="field-error" id="error-username"></span>
+            </div>
+
+            <div class="field-group {% if error %}has-error{% endif %}" id="field-password">
+                <label for="id_password">Password</label>
+                <input type="password" name="password" id="id_password" autocomplete="current-password">
+                <span class="field-error" id="error-password">
+                    {% if error %}{{ error }}{% endif %}
+                </span>
+            </div>
+
+            <button type="submit" class="btn cta-primary auth-submit">Login</button>
+
+            <p class="auth-switch">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+        </form>
+    </div>
 </div>
+
+<script>
+(function () {
+    const form     = document.getElementById("login-form");
+    const uInput   = document.getElementById("id_username");
+    const pInput   = document.getElementById("id_password");
+
+    function setError(fieldId, errorId, msg) {
+        document.getElementById(fieldId).classList.toggle("has-error", !!msg);
+        document.getElementById(errorId).textContent = msg;
+    }
+
+    uInput.addEventListener("input", function () {
+        if (this.value) setError("field-username", "error-username", "");
+    });
+
+    pInput.addEventListener("input", function () {
+        if (this.value) setError("field-password", "error-password", "");
+    });
+
+    form.addEventListener("submit", function (e) {
+        let blocked = false;
+        if (!uInput.value.trim()) {
+            setError("field-username", "error-username", "Username is required.");
+            blocked = true;
+        }
+        if (!pInput.value) {
+            setError("field-password", "error-password", "Password is required.");
+            blocked = true;
+        }
+        if (blocked) e.preventDefault();
+    });
+})();
+</script>
 {% endblock %}
