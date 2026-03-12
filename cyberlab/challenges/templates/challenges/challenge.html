@@ -54,35 +54,25 @@
 
                 <!-- Challenge Header -->
                 <div class="challenge-header-card">
-                    <span class="challenge-section-label">SECTION 1 &mdash; LEVEL 1</span>
-                    <h1 class="challenge-title">Intro to CyberSec</h1>
-                    <p class="challenge-desc">
-                        Welcome to your first challenge! Cybersecurity is the practice of protecting systems,
-                        networks, and programs from digital attacks. In this challenge, you will locate a hidden
-                        flag that has been placed in plain sight. Flags follow the format
-                        <code class="flag-format">flag{...}</code>.
-                    </p>
+                    <span class="challenge-section-label"> {{ problem.section }} LEVEL {{ problem.problem_number }}</span>
+                    
+                    <h1 {{ problem.problem_title }}</h1>
+                    
+                    <p {{ problem.description }}</p>
                 </div>
 
                 <!-- Challenge Body -->
                 <div class="challenge-body-card">
-                    <h2 class="challenge-body-title">Your Mission</h2>
-                    <p class="challenge-body-text">
-                        Every security professional needs to recognise when something is hiding in plain sight.
-                        The flag for this challenge has been encoded in the description below. Read carefully,
-                        then click <strong>Reveal Flag</strong> when you are ready to confirm your answer. <strong>Hint: </strong>The flag pieces are seperated by _ characters.
-                    </p>
-
-                    <div class="challenge-clue-box">
-                        <p>
-                            Th1s platform was built for people who look closer than everyone else.
-                            Every skill you build here 1s another layer of armour.
-                            Never underestimate th3 value of reading carefully &mdash;
-                            most attackers hide their work in plain text.
-                            The analyst who spots the f1rs7 anomaly in a log is the one who stops the breach.
-                            A sharp eye never misses a FlA6 when it is hiding right in front of them.
-                        </p>
+                   
+                    <div class="challenge-puzzle_content">
+                        <p> {{ problem.puzzle_content }} </p>
                     </div>
+                    
+                    {% if problem.hint %}
+                       <p><strong> Hint:</strong> {{ problem.hint }} </p>
+                    {% endif %}
+                
+                </div>
 
                     <!-- Reveal Flag Button + Hidden Flag -->
                     <div class="reveal-section">
