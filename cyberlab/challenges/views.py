@@ -14,7 +14,9 @@ def challenge_view(request, problem_id):
     
         submitted = request.POST.get("flag", "")
 
-        if check_flag(submitted, problem.hashed_flags):
+        correct = check_flag(submitted, problem.hashed_flags)
+
+        if correct:
             result = "correct"
         else:
             result = "incorrect"
@@ -23,7 +25,7 @@ def challenge_view(request, problem_id):
             user = request.user,
             problem = problem,
             flag_submitted = submitted,
-            correct = result,
+            correct = correct,
         )
 
     return render(request, 'challenges/challenge.html', {
