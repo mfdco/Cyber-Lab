@@ -1,39 +1,34 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import make_password
 from .models import Submission, Problems
 from .grading import *
-
-# Level 1 flag — hashed once at startup so check_flag can verify it
-_LEVEL_1_FLAG = r"flag{Th1s_1s_th3_f1rs7_FlA6}"
-_LEVEL_1_HASH = make_password(_LEVEL_1_FLAG)
-
 
 def challenge_view(request, problem_id):
     if not request.user.is_authenticated:
         return redirect('login')
 
+    problem = get_object_or_404(Problems, id = problem_id)
     result = None
 
     if request.method == "POST":
+    
         submitted = request.POST.get("flag", "")
-        if check_flag(submitted, _LEVEL_1_HASH):
+
+        if check_flag(submitted, problem.hashed_flags):
             result = "correct"
         else:
             result = "incorrect"
 
-        problem, _ = Problems.objects.get_or_create(
-            id=1,
-            defaults={'problem_title': 'Intro to CyberSec', 'flag': ''}
-        )
         Submission.objects.create(
-            user=request.user,
-            problem=problem,
-            flag_submitted=submitted,
-            correct=(result == "correct"),
+            user = request.user,
+            problem = problem,
+            flag_submitted = submitted,
+            correct = result,
         )
 
     return render(request, 'challenges/challenge.html', {
         'user': request.user,
+        'problem': problem,
         'result': result,
     })
 
