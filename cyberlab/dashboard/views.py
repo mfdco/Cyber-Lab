@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
-from challenges.models import Submission
+from challenges.models import Submission, Problems
+from itertools import groupby
 
 
 def dashboard_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    return render(request, 'dashboard/dashboard.html', {'user': request.user})
+    problems = {p.id: p for p in Problems.objects.all()}
+
+    return render(request, 'dashboard/dashboard.html', {
+        'user': request.user,
+        'problems': problems,
+    })
 
 
 def profile_view(request):

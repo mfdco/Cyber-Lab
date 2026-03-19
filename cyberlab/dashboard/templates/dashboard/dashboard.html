@@ -55,106 +55,94 @@
                     <div class="pack-header">
                         <span class="pack-label">SECTION 1</span>
                         <h2>Beginner Challenges</h2>
-                        <p>
-                            <span class="pack-label"></span>
-                        </p>
                     </div>
-
                     <div class="path-track">
                         <div class="path-step left">
                             <a href="{% url 'challenge' 1 %}" class="path-node available">
                                 <div class="node-circle">&#9733;</div>
-                                <span class="node-label">Intro to CyberLabs</span>
+                                <span class="node-label">{{ problems.1.problem_title|default:"Challenge 1" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 2 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.2.problem_title|default:"Challenge 2" }}</span>
+                            </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step left">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 3 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.3.problem_title|default:"Challenge 3" }}</span>
+                            </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 4 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.4.problem_title|default:"Challenge 4" }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Section 2 -->
                 <div class="path-pack">
-                    <div class="pack-header locked-pack-header">
+                    <div class="pack-header">
                         <span class="pack-label">SECTION 2</span>
                         <h2>Intermediate Challenges</h2>
-                        <p>
-                            <span class="pack-label">COMING SOON</span>
-                        </p>
                     </div>
-
                     <div class="path-track">
                         <div class="path-step left">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 5 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.5.problem_title|default:"Challenge 5" }}</span>
+                            </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 6 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.6.problem_title|default:"Challenge 6" }}</span>
+                            </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step left">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 7 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.7.problem_title|default:"Challenge 7" }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Section 3 -->
                 <div class="path-pack">
-                    <div class="pack-header locked-pack-header">
+                    <div class="pack-header">
                         <span class="pack-label">SECTION 3</span>
                         <h2>Advanced Challenges</h2>
-                        <p>
-                            <span class="pack-label">COMING SOON</span>
-                        </p>
                     </div>
-
                     <div class="path-track">
                         <div class="path-step left">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 8 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.8.problem_title|default:"Challenge 8" }}</span>
+                            </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 9 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.9.problem_title|default:"Challenge 9" }}</span>
+                            </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step left">
-                            <div class="path-node locked">
-                                <div class="node-circle">&#128274;</div>
-                                <span class="node-label">?</span>
-                            </div>
+                            <a href="{% url 'challenge' 10 %}" class="path-node available">
+                                <div class="node-circle">&#9733;</div>
+                                <span class="node-label">{{ problems.10.problem_title|default:"Challenge 10" }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>

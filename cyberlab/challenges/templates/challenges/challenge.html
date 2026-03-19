@@ -54,35 +54,29 @@
 
                 <!-- Challenge Header -->
                 <div class="challenge-header-card">
-                    <span class="challenge-section-label"> {{ problem.section }} LEVEL {{ problem.problem_number }}</span>
-                    
-                    <h1 {{ problem.problem_title }}</h1>
-                    
-                    <p {{ problem.description }}</p>
+                    <span class="challenge-section-label">{{ problem.section }} &mdash; LEVEL {{ problem.problem_number }}</span>
+                    <h1>{{ problem.problem_title }}</h1>
+                    <p>{{ problem.description }}</p>
                 </div>
 
                 <!-- Challenge Body -->
                 <div class="challenge-body-card">
-                   
-                    <div class="challenge-puzzle_content">
-                        <p> {{ problem.puzzle_content }} </p>
-                    </div>
-                    
-                    {% if problem.hint %}
-                       <p><strong> Hint:</strong> {{ problem.hint }} </p>
-                    {% endif %}
-                
-                </div>
 
-                    <!-- Reveal Flag Button + Hidden Flag -->
+                    <div class="challenge-puzzle_content">
+                        <p>{{ problem.puzzle_content }}</p>
+                    </div>
+
+                    {% if problem.hints %}
                     <div class="reveal-section">
-                        <button id="reveal-btn" class="reveal-btn" onclick="revealFlag()">
-                            &#128065; Reveal Flag
+                        <button id="reveal-btn" class="reveal-btn" onclick="toggleHint()">
+                            &#128161; Hint
                         </button>
-                        <div id="flag-display" class="flag-display hidden">
-                            <span class="flag-text">flag{Th1s_1s_th3_f1rs7_FlA6}</span>
+                        <div id="hint-display" class="flag-display hidden">
+                            <span class="flag-text">{{ problem.hints }}</span>
                         </div>
                     </div>
+                    {% endif %}
+
                 </div>
 
                 <!-- Flag Submission -->
@@ -90,7 +84,7 @@
                     <h2 class="challenge-body-title">Submit Your Flag</h2>
                     <p class="challenge-body-text">Enter the flag you found and press <strong>Enter</strong> or click Submit.</p>
 
-                    <form id="flag-form" method="POST" action="{% url 'challenge' 1 %}">
+                    <form id="flag-form" method="POST" action="{% url 'challenge' problem.id %}">
                         {% csrf_token %}
                         <div class="flag-input-row">
                             <input
@@ -123,15 +117,15 @@
     </div>
 
     <script>
-        function revealFlag() {
-            const display = document.getElementById('flag-display');
+        function toggleHint() {
+            const display = document.getElementById('hint-display');
             const btn = document.getElementById('reveal-btn');
             if (display.classList.contains('hidden')) {
                 display.classList.remove('hidden');
-                btn.textContent = '\uD83D\uDC41 Hide Flag';
+                btn.textContent = '\u{1F4A1} Hide Hint';
             } else {
                 display.classList.add('hidden');
-                btn.textContent = '\uD83D\uDC41 Reveal Flag';
+                btn.textContent = '\u{1F4A1} Hint';
             }
         }
     </script>
