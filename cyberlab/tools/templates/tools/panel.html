@@ -1,0 +1,159 @@
+<!-- Draggable Tools Panel -->
+<div id="tools-panel" class="tools-panel hidden">
+
+    <!-- Header / Drag Handle -->
+    <div class="tools-panel-header" id="tools-drag-handle">
+        <span class="tools-panel-title">&#128295; Tools</span>
+        <div class="tools-panel-controls">
+            <button class="tools-ctrl-btn" id="tools-min-btn" onclick="toggleMinimizeToolsPanel()" title="Minimize">&#8722;</button>
+            <button class="tools-ctrl-btn" onclick="closeToolsPanel()" title="Close">&#10005;</button>
+        </div>
+    </div>
+
+    <!-- Panel Body -->
+    <div class="tools-panel-body" id="tools-panel-body">
+
+        <!-- Tool Tabs -->
+        <div class="tools-tab-bar">
+            <button class="tools-tab active" onclick="switchToolTab('base64', this)">Base64</button>
+            <button class="tools-tab disabled" title="Coming soon" disabled>Hex</button>
+            <button class="tools-tab disabled" title="Coming soon" disabled>URL</button>
+            <button class="tools-tab disabled" title="Coming soon" disabled>ROT13</button>
+        </div>
+
+        <!-- Base64 Tool -->
+        <div id="tool-pane-base64" class="tool-pane">
+            <label class="tool-label">Input</label>
+            <textarea id="base64-input" class="tool-textarea" placeholder="Enter text to encode or decode..."></textarea>
+            <div class="tool-actions">
+                <button class="tool-action-btn" onclick="runBase64('encode')">Encode</button>
+                <button class="tool-action-btn" onclick="runBase64('decode')">Decode</button>
+                <button class="tool-clear-btn" onclick="clearBase64()">Clear</button>
+            </div>
+            <label class="tool-label">Output</label>
+            <div class="tool-output-row">
+                <textarea id="base64-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
+                <button class="tool-copy-btn" onclick="copyToolOutput('base64-output')" title="Copy output">&#128203;</button>
+            </div>
+            <div id="base64-error" class="tool-error hidden"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // ── Panel visibility ──────────────────────────────────────────────
+    function openToolsPanel() {
+        const panel = document.getElementById('tools-panel');
+        panel.classList.remove('hidden');
+    }
+
+    function closeToolsPanel() {
+        document.getElementById('tools-panel').classList.add('hidden');
+    }
+
+    function toggleToolsPanel() {
+        const panel = document.getElementById('tools-panel');
+        panel.classList.toggle('hidden');
+    }
+
+    function toggleMinimizeToolsPanel() {
+        const body = document.getElementById('tools-panel-body');
+        const btn  = document.getElementById('tools-min-btn');
+        const panel = document.getElementById('tools-panel');
+        if (body.classList.contains('hidden')) {
+            body.classList.remove('hidden');
+            btn.innerHTML = '&#8722;';
+            panel.style.minHeight = '';
+        } else {
+            body.classList.add('hidden');
+            btn.innerHTML = '&#9633;';
+            panel.style.minHeight = '0';
+        }
+    }
+
+    // ── Tab switching ─────────────────────────────────────────────────
+    function switchToolTab(toolName, clickedBtn) {
+        document.querySelectorAll('.tool-pane').forEach(p => p.classList.add('hidden'));
+        document.querySelectorAll('.tools-tab:not([disabled])').forEach(b => b.classList.remove('active'));
+        const pane = document.getElementById('tool-pane-' + toolName);
+        if (pane) pane.classList.remove('hidden');
+        if (clickedBtn) clickedBtn.classList.add('active');
+    }
+
+    // ── Base64 tool ───────────────────────────────────────────────────
+    function runBase64(action) {
+        const input  = document.getElementById('base64-input').value;
+        const output = document.getElementById('base64-output');
+        const errBox = document.getElementById('base64-error');
+        errBox.classList.add('hidden');
+        errBox.textContent = '';
+        try {
+            if (action === 'encode') {
+                // Handle unicode safely
+                output.value = btoa(unescape(encodeURIComponent(input)));
+            } else {
+                output.value = decodeURIComponent(escape(atob(input.trim())));
+            }
+        } catch (e) {
+            errBox.textContent = action === 'decode'
+                ? 'Invalid Base64 input. Make sure the text is a valid Base64 string.'
+                : 'Encoding error: ' + e.message;
+            errBox.classList.remove('hidden');
+            output.value = '';
+        }
+    }
+
+    function clearBase64() {
+        document.getElementById('base64-input').value = '';
+        document.getElementById('base64-output').value = '';
+        const errBox = document.getElementById('base64-error');
+        errBox.classList.add('hidden');
+        errBox.textContent = '';
+    }
+
+    // ── Copy helper ───────────────────────────────────────────────────
+    function copyToolOutput(id) {
+        const el = document.getElementById(id);
+        if (!el.value) return;
+        navigator.clipboard.writeText(el.value).then(() => {
+            const btn = el.parentElement.querySelector('.tool-copy-btn');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '&#10003;';
+            setTimeout(() => { btn.innerHTML = orig; }, 1200);
+        });
+    }
+
+    // ── Drag behaviour ────────────────────────────────────────────────
+    (function () {
+        const panel  = document.getElementById('tools-panel');
+        const handle = document.getElementById('tools-drag-handle');
+        let dragging = false, startX, startY, origLeft, origTop;
+
+        handle.addEventListener('mousedown', function (e) {
+            if (e.target.classList.contains('tools-ctrl-btn')) return;
+            dragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            const rect = panel.getBoundingClientRect();
+            origLeft = rect.left;
+            origTop  = rect.top;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!dragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            panel.style.left   = (origLeft + dx) + 'px';
+            panel.style.top    = (origTop  + dy) + 'px';
+            panel.style.right  = 'auto';
+            panel.style.bottom = 'auto';
+        });
+
+        document.addEventListener('mouseup', function () {
+            dragging = false;
+            document.body.style.userSelect = '';
+        });
+    })();
+</script>

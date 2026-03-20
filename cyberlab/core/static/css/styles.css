@@ -741,3 +741,238 @@
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+
+/* ── Tools Floating Panel ──────────────────────────────────────── */
+.tools-panel {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 360px;
+    background: #ffffff;
+    border: 1px solid #dfe7f1;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(10, 61, 98, 0.18);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.tools-panel.hidden {
+    display: none;
+}
+
+.tools-panel-header {
+    background: #0a3d62;
+    color: #ffffff;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: move;
+    user-select: none;
+    border-radius: 12px 12px 0 0;
+}
+
+.tools-panel-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.tools-panel-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.tools-ctrl-btn {
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+}
+
+.tools-ctrl-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.tools-panel-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 12px 0;
+}
+
+.tools-panel-body.hidden {
+    display: none;
+}
+
+.tools-tab-bar {
+    display: flex;
+    border-bottom: 1px solid #dfe7f1;
+    padding: 0 12px;
+    gap: 4px;
+    background: #f5f7fa;
+}
+
+.tools-tab {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #4a5a6a;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+}
+
+.tools-tab:hover:not([disabled]) {
+    color: #0a3d62;
+}
+
+.tools-tab.active {
+    color: #0a3d62;
+    border-bottom-color: #0a3d62;
+    font-weight: 600;
+}
+
+.tools-tab.disabled,
+.tools-tab[disabled] {
+    color: #adb5bd;
+    cursor: not-allowed;
+}
+
+.tool-pane {
+    padding: 12px 14px 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tool-pane.hidden {
+    display: none;
+}
+
+.tool-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #4a5a6a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tool-textarea {
+    width: 100%;
+    height: 72px;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    font-family: "Consolas", "Courier New", monospace;
+    border: 1px solid #dfe7f1;
+    border-radius: 8px;
+    resize: vertical;
+    background: #f9fbfd;
+    color: #2d3e50;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.tool-textarea:focus {
+    border-color: #0a3d62;
+    background: #ffffff;
+}
+
+.tool-textarea.tool-output {
+    background: #eef2f7;
+    color: #2d3e50;
+    cursor: default;
+}
+
+.tool-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.tool-action-btn {
+    padding: 6px 14px;
+    background: #0a3d62;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.83rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.tool-action-btn:hover {
+    background: #0d4f7e;
+}
+
+.tool-clear-btn {
+    padding: 6px 14px;
+    background: #dfe7f1;
+    color: #2d3e50;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.83rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.tool-clear-btn:hover {
+    background: #c9d6e3;
+}
+
+.tool-output-row {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.tool-output-row .tool-textarea {
+    flex: 1;
+}
+
+.tool-copy-btn {
+    padding: 6px 10px;
+    background: #dfe7f1;
+    color: #2d3e50;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+
+.tool-copy-btn:hover {
+    background: #c9d6e3;
+}
+
+.tool-error {
+    font-size: 0.8rem;
+    color: #721c24;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+.tool-error.hidden {
+    display: none;
+}
+
+/* Sidebar Tools link — clickable toggle style */
+.sidebar-link.tools-toggle {
+    cursor: pointer;
+}
