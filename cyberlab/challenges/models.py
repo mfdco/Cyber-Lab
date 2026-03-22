@@ -16,6 +16,12 @@ class Problems(models.Model):
     puzzle_content = models.TextField()
 
     hints = models.TextField()
+
+    downloadable_file = models.FileField(
+        upload_to="challenge_files/",
+        blank = True,
+        null = True    
+    )
     
     # these flags will be stored in the database
     hashed_flags = models.CharField(max_length = 255, editable = False)

@@ -79,6 +79,12 @@
 
                 </div>
                 
+                {% if problem.downloadable_file %}
+                    <a href = "{{ problem.downloadable_file.url }}" download>
+                        Download challenge file
+                    </a>
+                {% endif %}
+                
                 <!-- Note to self here is the flag -->
                 <!-- ZmxhZ3tpbnNwZWN0X3RoZV9zb3VyY2V9 -->
 

@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import make_password
 from .models import Submission, Problems
 from .grading import *
+from django.http import HttpResponse
+from django.shortcuts import redirect
+
 
 def challenge_view(request, problem_id):
     if not request.user.is_authenticated:
