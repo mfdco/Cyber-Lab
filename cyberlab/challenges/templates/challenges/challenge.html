@@ -108,22 +108,14 @@
                             <button type="submit" class="submit-flag-btn">Submit</button>
                         </div>
                     </form>
-
-                    <!-- Feedback -->
-                    {% if result == "correct" %}
-                        <div class="feedback-banner feedback-correct">
-                            &#10003; Correct! Well done &mdash; you found the flag!
-                        </div>
-                    {% elif result == "incorrect" %}
-                        <div class="feedback-banner feedback-incorrect">
-                            &#10007; Incorrect flag. Check your spelling and try again.
-                        </div>
-                    {% endif %}
                 </div>
 
             </div>
         </main>
     </div>
+
+    <!-- Toast popup -->
+    <div id="flag-toast" class="flag-toast hidden"></div>
 
     <script>
         function toggleHint() {
@@ -136,6 +128,37 @@
                 display.classList.add('hidden');
                 btn.textContent = '\u{1F4A1} Hint';
             }
+        }
+
+        // AJAX flag submission
+        const form = document.getElementById('flag-form');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                body: data,
+            })
+            .then(res => res.json())
+            .then(data => {
+                showToast(data.result);
+                document.getElementById('flag-input').value = '';
+            });
+        });
+
+        let toastTimer = null;
+        function showToast(result) {
+            const toast = document.getElementById('flag-toast');
+            toast.className = 'flag-toast ' + (result === 'correct' ? 'toast-correct' : 'toast-incorrect');
+            toast.textContent = result === 'correct'
+                ? '✓ Correct! Well done — you found the flag!'
+                : '✗ Incorrect flag. Check your spelling and try again.';
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('toast-fade');
+                setTimeout(() => { toast.className = 'flag-toast hidden'; }, 400);
+            }, 5000);
         }
     </script>
 

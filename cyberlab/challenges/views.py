@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import make_password
 from .models import Submission, Problems
 from .grading import *
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 
 
@@ -14,22 +14,21 @@ def challenge_view(request, problem_id):
     result = None
 
     if request.method == "POST":
-    
-        submitted = request.POST.get("flag", "")
 
+        submitted = request.POST.get("flag", "")
         correct = check_flag(submitted, problem.hashed_flags)
 
-        if correct:
-            result = "correct"
-        else:
-            result = "incorrect"
-
         Submission.objects.create(
-            user = request.user,
-            problem = problem,
-            flag_submitted = submitted,
-            correct = correct,
+            user=request.user,
+            problem=problem,
+            flag_submitted=submitted,
+            correct=correct,
         )
+
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({'result': 'correct' if correct else 'incorrect'})
+
+        result = "correct" if correct else "incorrect"
 
     return render(request, 'challenges/challenge.html', {
         'user': request.user,

@@ -1302,6 +1302,43 @@
     cursor: pointer;
 }
 
+/* ===== FLAG TOAST ===== */
+
+.flag-toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    z-index: 99999;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: opacity 0.4s ease;
+    white-space: nowrap;
+}
+
+.flag-toast.hidden {
+    display: none;
+}
+
+.flag-toast.toast-correct {
+    background: rgba(39, 174, 96, 0.15);
+    border: 1px solid rgba(39, 174, 96, 0.4);
+    color: #2ecc71;
+}
+
+.flag-toast.toast-incorrect {
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid rgba(231, 76, 60, 0.4);
+    color: #e74c3c;
+}
+
+.flag-toast.toast-fade {
+    opacity: 0;
+}
+
 /* ===== PROGRESS PAGE ===== */
 
 .progress-container {
