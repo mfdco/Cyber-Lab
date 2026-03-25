@@ -1287,3 +1287,231 @@
 .sidebar-link.tools-toggle {
     cursor: pointer;
 }
+
+/* ===== PROGRESS PAGE ===== */
+
+.progress-container {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* Hero — ring + text side by side */
+.progress-hero {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 32px 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+/* SVG Ring */
+.progress-ring-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+    display: block;
+}
+
+.progress-ring-track {
+    fill: none;
+    stroke: rgba(255,255,255,0.08);
+    stroke-width: 10;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: #f9ca24;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.progress-ring-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.progress-ring-pct {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #f9ca24;
+    line-height: 1;
+}
+
+.progress-ring-sub {
+    display: block;
+    font-size: 0.72rem;
+    color: #8395a7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* Hero text */
+.progress-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+}
+
+.progress-subtitle {
+    font-size: 0.95rem;
+    color: #8395a7;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.progress-subtitle strong {
+    color: #dfe7f1;
+}
+
+/* Section cards */
+.progress-section-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.progress-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: rgba(10, 61, 98, 0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.progress-section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #f9ca24;
+}
+
+.progress-section-count {
+    font-size: 0.78rem;
+    color: #8395a7;
+}
+
+/* Level rows */
+.progress-level-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-level-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+}
+
+.progress-level-row:last-child {
+    border-bottom: none;
+}
+
+.progress-level-row:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+/* Icon circle */
+.progress-level-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.progress-level-row.solved .progress-level-icon {
+    background: rgba(39, 174, 96, 0.15);
+    border: 2px solid rgba(39, 174, 96, 0.4);
+    color: #2ecc71;
+}
+
+.progress-level-row.unsolved .progress-level-icon {
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.1);
+    color: #3d5166;
+}
+
+/* Level name/number */
+.progress-level-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.progress-level-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #dfe7f1;
+}
+
+.progress-level-row.unsolved .progress-level-name {
+    color: #8395a7;
+}
+
+.progress-level-num {
+    font-size: 0.75rem;
+    color: #3d5166;
+}
+
+/* Badges */
+.badge-solved {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(39, 174, 96, 0.15);
+    color: #2ecc71;
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    white-space: nowrap;
+}
+
+.badge-unsolved {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.04);
+    color: #3d5166;
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+}
+
+/* Empty state */
+.progress-empty {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 40px;
+    text-align: center;
+    color: #8395a7;
+    font-size: 0.95rem;
+}
