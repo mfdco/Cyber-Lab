@@ -28,7 +28,7 @@
                 <a href="{% url 'dashboard' %}" class="sidebar-link">
                     <span class="sidebar-icon">&#128506;</span> Learning Paths
                 </a>
-                <a href="#" class="sidebar-link disabled">
+                <a href="#" class="sidebar-link tools-toggle" onclick="toggleToolsPanel(); return false;">
                     <span class="sidebar-icon">&#128295;</span> Tools
                 </a>
                 <a href="#" class="sidebar-link disabled">
@@ -77,6 +77,8 @@
             </div>
         </main>
     </div>
+
+    {% include 'tools/panel.html' %}
 
 </body>
 </html>

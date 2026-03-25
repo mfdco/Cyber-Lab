@@ -34,6 +34,7 @@ urlpatterns = [
     path('profile/', dashboard_views.profile_view, name='profile'),
     path('history/', dashboard_views.history_view, name='history'),
     path('challenge/<int:problem_id>/', challenge_views.challenge_view, name='challenge'),
+    path('tools/', include('tools.urls')),
 ]
 
 if settings.DEBUG:

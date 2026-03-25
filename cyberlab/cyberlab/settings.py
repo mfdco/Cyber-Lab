@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',
     'dashboard',
     'challenges',
+    'tools',
 ]
 
 MIDDLEWARE = [
