@@ -16,9 +16,27 @@
         <!-- Tool Tabs -->
         <div class="tools-tab-bar">
             <button class="tools-tab active" onclick="switchToolTab('base64', this)">Base64</button>
+            <button class="tools-tab" onclick="switchToolTab('binary', this)">Binary</button>
             <button class="tools-tab disabled" title="Coming soon" disabled>Hex</button>
             <button class="tools-tab disabled" title="Coming soon" disabled>URL</button>
             <button class="tools-tab disabled" title="Coming soon" disabled>ROT13</button>
+        </div>
+
+        <!-- Binary Tool -->
+        <div id="tool-pane-binary" class="tool-pane hidden">
+            <label class="tool-label">Input</label>
+            <textarea id="binary-input" class="tool-textarea" placeholder="Enter text or binary (e.g. 01001000 01101001)..."></textarea>
+            <div class="tool-actions">
+                <button class="tool-action-btn" onclick="runBinary('encode')">Encode</button>
+                <button class="tool-action-btn" onclick="runBinary('decode')">Decode</button>
+                <button class="tool-clear-btn" onclick="clearBinary()">Clear</button>
+            </div>
+            <label class="tool-label">Output</label>
+            <div class="tool-output-row">
+                <textarea id="binary-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
+                <button class="tool-copy-btn" onclick="copyToolOutput('binary-output')" title="Copy output">&#128203;</button>
+            </div>
+            <div id="binary-error" class="tool-error hidden"></div>
         </div>
 
         <!-- Base64 Tool -->
@@ -108,6 +126,38 @@
         document.getElementById('base64-input').value = '';
         document.getElementById('base64-output').value = '';
         const errBox = document.getElementById('base64-error');
+        errBox.classList.add('hidden');
+        errBox.textContent = '';
+    }
+
+    // ── Binary tool ───────────────────────────────────────────────────
+    function runBinary(action) {
+        const input  = document.getElementById('binary-input').value;
+        const output = document.getElementById('binary-output');
+        const errBox = document.getElementById('binary-error');
+        errBox.classList.add('hidden');
+        errBox.textContent = '';
+        try {
+            if (action === 'encode') {
+                output.value = input.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+            } else {
+                const parts = input.trim().split(/\s+/);
+                if (parts.some(p => !/^[01]{8}$/.test(p))) throw new Error('invalid');
+                output.value = parts.map(b => String.fromCharCode(parseInt(b, 2))).join('');
+            }
+        } catch (e) {
+            errBox.textContent = action === 'decode'
+                ? 'Invalid binary input. Make sure each byte is 8 bits separated by spaces.'
+                : 'Encoding error: ' + e.message;
+            errBox.classList.remove('hidden');
+            output.value = '';
+        }
+    }
+
+    function clearBinary() {
+        document.getElementById('binary-input').value = '';
+        document.getElementById('binary-output').value = '';
+        const errBox = document.getElementById('binary-error');
         errBox.classList.add('hidden');
         errBox.textContent = '';
     }
