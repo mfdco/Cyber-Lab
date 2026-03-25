@@ -58,28 +58,28 @@
                     </div>
                     <div class="path-track">
                         <div class="path-step left">
-                            <a href="{% url 'challenge' 1 %}" class="path-node available">
+                            <a href="{% url 'challenge' 1 %}" class="path-node available{% if 1 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.1.problem_title|default:"Challenge 1" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <a href="{% url 'challenge' 2 %}" class="path-node available">
+                            <a href="{% url 'challenge' 2 %}" class="path-node available{% if 2 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.2.problem_title|default:"Challenge 2" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step left">
-                            <a href="{% url 'challenge' 3 %}" class="path-node available">
+                            <a href="{% url 'challenge' 3 %}" class="path-node available{% if 3 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.3.problem_title|default:"Challenge 3" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <a href="{% url 'challenge' 4 %}" class="path-node available">
+                            <a href="{% url 'challenge' 4 %}" class="path-node available{% if 4 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.4.problem_title|default:"Challenge 4" }}</span>
                             </a>
@@ -95,21 +95,21 @@
                     </div>
                     <div class="path-track">
                         <div class="path-step left">
-                            <a href="{% url 'challenge' 5 %}" class="path-node available">
+                            <a href="{% url 'challenge' 5 %}" class="path-node available{% if 5 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.5.problem_title|default:"Challenge 5" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <a href="{% url 'challenge' 6 %}" class="path-node available">
+                            <a href="{% url 'challenge' 6 %}" class="path-node available{% if 6 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.6.problem_title|default:"Challenge 6" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step left">
-                            <a href="{% url 'challenge' 7 %}" class="path-node available">
+                            <a href="{% url 'challenge' 7 %}" class="path-node available{% if 7 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.7.problem_title|default:"Challenge 7" }}</span>
                             </a>
@@ -125,21 +125,21 @@
                     </div>
                     <div class="path-track">
                         <div class="path-step left">
-                            <a href="{% url 'challenge' 8 %}" class="path-node available">
+                            <a href="{% url 'challenge' 8 %}" class="path-node available{% if 8 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.8.problem_title|default:"Challenge 8" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step right">
-                            <a href="{% url 'challenge' 9 %}" class="path-node available">
+                            <a href="{% url 'challenge' 9 %}" class="path-node available{% if 9 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.9.problem_title|default:"Challenge 9" }}</span>
                             </a>
                         </div>
                         <div class="v-connector"></div>
                         <div class="path-step left">
-                            <a href="{% url 'challenge' 10 %}" class="path-node available">
+                            <a href="{% url 'challenge' 10 %}" class="path-node available{% if 10 in solved_ids %} completed{% endif %}">
                                 <div class="node-circle">&#9733;</div>
                                 <span class="node-label">{{ problems.10.problem_title|default:"Challenge 10" }}</span>
                             </a>

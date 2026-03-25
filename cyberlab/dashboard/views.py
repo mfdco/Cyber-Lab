@@ -9,9 +9,15 @@ def dashboard_view(request):
 
     problems = {p.id: p for p in Problems.objects.all()}
 
+    solved_ids = set(
+        Submission.objects.filter(user=request.user, correct=True)
+        .values_list('problem_id', flat=True)
+    )
+
     return render(request, 'dashboard/dashboard.html', {
         'user': request.user,
         'problems': problems,
+        'solved_ids': solved_ids,
     })
 
 
