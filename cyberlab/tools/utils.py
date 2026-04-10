@@ -1,4 +1,5 @@
 import base64
+import urllib.parse
 
 
 def encode_base64(text):
@@ -26,3 +27,33 @@ def decode_binary(text):
     for binary_letter in binary_text:
         decoded_text.append(chr(int(binary_letter, 2)))
     return "".join(decoded_text)
+
+
+def encode_hex(text):
+    return text.encode("utf-8").hex()
+
+
+def decode_hex(text):
+    return bytes.fromhex(text).decode("utf-8")
+
+
+def encode_url(text):
+    return urllib.parse.quote(text)
+
+
+def decode_url(text):
+    return urllib.parse.unquote(text)
+
+
+def rot13_text(text):
+    result = ""
+
+    for letter in text:
+        if "a" <= letter <= "z":
+            result += chr((ord(letter) - ord("a") + 13) % 26 + ord("a"))
+        elif "A" <= letter <= "Z":
+            result += chr((ord(letter) - ord("A") + 13) % 26 + ord("A"))
+        else:
+            result += letter
+
+    return result
