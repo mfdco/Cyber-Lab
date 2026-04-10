@@ -28,6 +28,12 @@
     color: #f9ca24;
 }
 
+.logo-img {
+    height: 68px;
+    width: auto;
+    display: block;
+}
+
 /* Buttons */
 .btn {
     text-decoration: none;
@@ -83,7 +89,7 @@
 
 /* Hero Section */
 .hero {
-    padding: 100px 40px 90px;
+    padding: 4px 40px 60px;
     text-align: center;
     background: #0d1b2a;
     background-image: radial-gradient(ellipse at 50% 0%, rgba(52, 152, 219, 0.12) 0%, transparent 70%);
@@ -92,6 +98,13 @@
 .hero-inner {
     max-width: 720px;
     margin: 0 auto;
+}
+
+.hero-logo {
+    height: 280px;
+    width: auto;
+    margin: -20px auto -20px;
+    display: block;
 }
 
 .hero-badge {

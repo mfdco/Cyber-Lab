@@ -4,9 +4,11 @@
 {% block title %}Home | CyberLabs{% endblock %}
 
 
+{% load static %}
 {% block content %}
 <section class="hero">
     <div class="hero-inner">
+        <img src="{% static 'img/logo.png' %}" alt="CyberLabs" class="hero-logo">
         <div class="hero-badge">Cybersecurity Training Lab</div>
         <h1>Learn by <span class="hero-accent">hacking</span>.<br>Level up your skills.</h1>
         <p>A hands-on cybersecurity learning lab. Progress through structured challenges, capture flags, and build real-world skills — all in your browser.</p>

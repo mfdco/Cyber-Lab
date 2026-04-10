@@ -12,7 +12,7 @@
 
     <!-- Header -->
     <header class="dashboard-header">
-        <a href="{% url 'dashboard' %}" class="logo-link">CyberLabs</a>
+        <a href="{% url 'dashboard' %}" class="logo-link"><img src="{% static 'img/logo.png' %}" alt="CyberLabs" class="logo-img"></a>
         <div class="header-user">
             <span class="header-username">{{ user.username }}</span>
         </div>
