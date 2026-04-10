@@ -17,26 +17,9 @@
         <div class="tools-tab-bar">
             <button class="tools-tab active" onclick="switchToolTab('base64', this)">Base64</button>
             <button class="tools-tab" onclick="switchToolTab('binary', this)">Binary</button>
-            <button class="tools-tab disabled" title="Coming soon" disabled>Hex</button>
-            <button class="tools-tab disabled" title="Coming soon" disabled>URL</button>
-            <button class="tools-tab disabled" title="Coming soon" disabled>ROT13</button>
-        </div>
-
-        <!-- Binary Tool -->
-        <div id="tool-pane-binary" class="tool-pane hidden">
-            <label class="tool-label">Input</label>
-            <textarea id="binary-input" class="tool-textarea" placeholder="Enter text or binary (e.g. 01001000 01101001)..."></textarea>
-            <div class="tool-actions">
-                <button class="tool-action-btn" onclick="runBinary('encode')">Encode</button>
-                <button class="tool-action-btn" onclick="runBinary('decode')">Decode</button>
-                <button class="tool-clear-btn" onclick="clearBinary()">Clear</button>
-            </div>
-            <label class="tool-label">Output</label>
-            <div class="tool-output-row">
-                <textarea id="binary-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
-                <button class="tool-copy-btn" onclick="copyToolOutput('binary-output')" title="Copy output">&#128203;</button>
-            </div>
-            <div id="binary-error" class="tool-error hidden"></div>
+            <button class="tools-tab" onclick="switchToolTab('hex', this)">Hex</button>
+            <button class="tools-tab" onclick="switchToolTab('url', this)">URL</button>
+            <button class="tools-tab" onclick="switchToolTab('rot13', this)">ROT13</button>
         </div>
 
         <!-- Base64 Tool -->
@@ -46,14 +29,80 @@
             <div class="tool-actions">
                 <button class="tool-action-btn" onclick="runBase64('encode')">Encode</button>
                 <button class="tool-action-btn" onclick="runBase64('decode')">Decode</button>
-                <button class="tool-clear-btn" onclick="clearBase64()">Clear</button>
+                <button class="tool-clear-btn" onclick="clearTool('base64')">Clear</button>
             </div>
             <label class="tool-label">Output</label>
             <div class="tool-output-row">
                 <textarea id="base64-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
-                <button class="tool-copy-btn" onclick="copyToolOutput('base64-output')" title="Copy output">&#128203;</button>
+                <button class="tool-copy-btn" onclick="copyToolOutput('base64-output')" title="Copy">&#128203;</button>
             </div>
             <div id="base64-error" class="tool-error hidden"></div>
+        </div>
+
+        <!-- Binary Tool -->
+        <div id="tool-pane-binary" class="tool-pane hidden">
+            <label class="tool-label">Input</label>
+            <textarea id="binary-input" class="tool-textarea" placeholder="Enter text or binary (e.g. 01001000 01101001)..."></textarea>
+            <div class="tool-actions">
+                <button class="tool-action-btn" onclick="runBinary('encode')">Encode</button>
+                <button class="tool-action-btn" onclick="runBinary('decode')">Decode</button>
+                <button class="tool-clear-btn" onclick="clearTool('binary')">Clear</button>
+            </div>
+            <label class="tool-label">Output</label>
+            <div class="tool-output-row">
+                <textarea id="binary-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
+                <button class="tool-copy-btn" onclick="copyToolOutput('binary-output')" title="Copy">&#128203;</button>
+            </div>
+            <div id="binary-error" class="tool-error hidden"></div>
+        </div>
+
+        <!-- Hex Tool -->
+        <div id="tool-pane-hex" class="tool-pane hidden">
+            <label class="tool-label">Input</label>
+            <textarea id="hex-input" class="tool-textarea" placeholder="Enter text or hex (e.g. 48656c6c6f)..."></textarea>
+            <div class="tool-actions">
+                <button class="tool-action-btn" onclick="runHex('encode')">Encode</button>
+                <button class="tool-action-btn" onclick="runHex('decode')">Decode</button>
+                <button class="tool-clear-btn" onclick="clearTool('hex')">Clear</button>
+            </div>
+            <label class="tool-label">Output</label>
+            <div class="tool-output-row">
+                <textarea id="hex-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
+                <button class="tool-copy-btn" onclick="copyToolOutput('hex-output')" title="Copy">&#128203;</button>
+            </div>
+            <div id="hex-error" class="tool-error hidden"></div>
+        </div>
+
+        <!-- URL Tool -->
+        <div id="tool-pane-url" class="tool-pane hidden">
+            <label class="tool-label">Input</label>
+            <textarea id="url-input" class="tool-textarea" placeholder="Enter text or URL-encoded string..."></textarea>
+            <div class="tool-actions">
+                <button class="tool-action-btn" onclick="runURL('encode')">Encode</button>
+                <button class="tool-action-btn" onclick="runURL('decode')">Decode</button>
+                <button class="tool-clear-btn" onclick="clearTool('url')">Clear</button>
+            </div>
+            <label class="tool-label">Output</label>
+            <div class="tool-output-row">
+                <textarea id="url-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
+                <button class="tool-copy-btn" onclick="copyToolOutput('url-output')" title="Copy">&#128203;</button>
+            </div>
+            <div id="url-error" class="tool-error hidden"></div>
+        </div>
+
+        <!-- ROT13 Tool -->
+        <div id="tool-pane-rot13" class="tool-pane hidden">
+            <label class="tool-label">Input</label>
+            <textarea id="rot13-input" class="tool-textarea" placeholder="Enter text to apply ROT13..."></textarea>
+            <div class="tool-actions">
+                <button class="tool-action-btn tool-action-btn--wide" onclick="runROT13()">Apply ROT13</button>
+                <button class="tool-clear-btn" onclick="clearTool('rot13')">Clear</button>
+            </div>
+            <label class="tool-label">Output</label>
+            <div class="tool-output-row">
+                <textarea id="rot13-output" class="tool-textarea tool-output" readonly placeholder="Result will appear here..."></textarea>
+                <button class="tool-copy-btn" onclick="copyToolOutput('rot13-output')" title="Copy">&#128203;</button>
+            </div>
         </div>
 
     </div>
@@ -62,8 +111,7 @@
 <script>
     // ── Panel visibility ──────────────────────────────────────────────
     function openToolsPanel() {
-        const panel = document.getElementById('tools-panel');
-        panel.classList.remove('hidden');
+        document.getElementById('tools-panel').classList.remove('hidden');
     }
 
     function closeToolsPanel() {
@@ -71,13 +119,12 @@
     }
 
     function toggleToolsPanel() {
-        const panel = document.getElementById('tools-panel');
-        panel.classList.toggle('hidden');
+        document.getElementById('tools-panel').classList.toggle('hidden');
     }
 
     function toggleMinimizeToolsPanel() {
-        const body = document.getElementById('tools-panel-body');
-        const btn  = document.getElementById('tools-min-btn');
+        const body  = document.getElementById('tools-panel-body');
+        const btn   = document.getElementById('tools-min-btn');
         const panel = document.getElementById('tools-panel');
         if (body.classList.contains('hidden')) {
             body.classList.remove('hidden');
@@ -93,73 +140,116 @@
     // ── Tab switching ─────────────────────────────────────────────────
     function switchToolTab(toolName, clickedBtn) {
         document.querySelectorAll('.tool-pane').forEach(p => p.classList.add('hidden'));
-        document.querySelectorAll('.tools-tab:not([disabled])').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tools-tab').forEach(b => b.classList.remove('active'));
         const pane = document.getElementById('tool-pane-' + toolName);
         if (pane) pane.classList.remove('hidden');
         if (clickedBtn) clickedBtn.classList.add('active');
     }
 
-    // ── Base64 tool ───────────────────────────────────────────────────
+    // ── Error / clear helpers ─────────────────────────────────────────
+    function showError(id, msg) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.remove('hidden');
+    }
+
+    function hideError(id) {
+        const el = document.getElementById(id);
+        if (el) { el.textContent = ''; el.classList.add('hidden'); }
+    }
+
+    function clearTool(name) {
+        document.getElementById(name + '-input').value = '';
+        document.getElementById(name + '-output').value = '';
+        hideError(name + '-error');
+    }
+
+    // ── Base64 ────────────────────────────────────────────────────────
     function runBase64(action) {
         const input  = document.getElementById('base64-input').value;
         const output = document.getElementById('base64-output');
-        const errBox = document.getElementById('base64-error');
-        errBox.classList.add('hidden');
-        errBox.textContent = '';
+        hideError('base64-error');
         try {
-            if (action === 'encode') {
-                // Handle unicode safely
-                output.value = btoa(unescape(encodeURIComponent(input)));
-            } else {
-                output.value = decodeURIComponent(escape(atob(input.trim())));
-            }
-        } catch (e) {
-            errBox.textContent = action === 'decode'
-                ? 'Invalid Base64 input. Make sure the text is a valid Base64 string.'
-                : 'Encoding error: ' + e.message;
-            errBox.classList.remove('hidden');
+            output.value = action === 'encode'
+                ? btoa(unescape(encodeURIComponent(input)))
+                : decodeURIComponent(escape(atob(input.trim())));
+        } catch {
             output.value = '';
+            showError('base64-error', action === 'decode'
+                ? 'Invalid Base64 — make sure the input is a valid Base64 string.'
+                : 'Encoding error.');
         }
     }
 
-    function clearBase64() {
-        document.getElementById('base64-input').value = '';
-        document.getElementById('base64-output').value = '';
-        const errBox = document.getElementById('base64-error');
-        errBox.classList.add('hidden');
-        errBox.textContent = '';
-    }
-
-    // ── Binary tool ───────────────────────────────────────────────────
+    // ── Binary ────────────────────────────────────────────────────────
     function runBinary(action) {
         const input  = document.getElementById('binary-input').value;
         const output = document.getElementById('binary-output');
-        const errBox = document.getElementById('binary-error');
-        errBox.classList.add('hidden');
-        errBox.textContent = '';
+        hideError('binary-error');
         try {
             if (action === 'encode') {
                 output.value = input.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
             } else {
                 const parts = input.trim().split(/\s+/);
-                if (parts.some(p => !/^[01]{8}$/.test(p))) throw new Error('invalid');
+                if (parts.some(p => !/^[01]{8}$/.test(p))) throw new Error();
                 output.value = parts.map(b => String.fromCharCode(parseInt(b, 2))).join('');
             }
-        } catch (e) {
-            errBox.textContent = action === 'decode'
-                ? 'Invalid binary input. Make sure each byte is 8 bits separated by spaces.'
-                : 'Encoding error: ' + e.message;
-            errBox.classList.remove('hidden');
+        } catch {
             output.value = '';
+            showError('binary-error', action === 'decode'
+                ? 'Invalid binary — each byte must be 8 bits, separated by spaces.'
+                : 'Encoding error.');
         }
     }
 
-    function clearBinary() {
-        document.getElementById('binary-input').value = '';
-        document.getElementById('binary-output').value = '';
-        const errBox = document.getElementById('binary-error');
-        errBox.classList.add('hidden');
-        errBox.textContent = '';
+    // ── Hex ───────────────────────────────────────────────────────────
+    function runHex(action) {
+        const input  = document.getElementById('hex-input').value;
+        const output = document.getElementById('hex-output');
+        hideError('hex-error');
+        try {
+            if (action === 'encode') {
+                output.value = Array.from(new TextEncoder().encode(input))
+                    .map(b => b.toString(16).padStart(2, '0')).join('');
+            } else {
+                const hex = input.trim().replace(/\s+/g, '');
+                if (!/^[0-9a-fA-F]*$/.test(hex) || hex.length % 2 !== 0) throw new Error();
+                output.value = new TextDecoder().decode(
+                    new Uint8Array(hex.match(/.{2}/g).map(b => parseInt(b, 16)))
+                );
+            }
+        } catch {
+            output.value = '';
+            showError('hex-error', action === 'decode'
+                ? 'Invalid hex — input must be a valid hex string.'
+                : 'Encoding error.');
+        }
+    }
+
+    // ── URL ───────────────────────────────────────────────────────────
+    function runURL(action) {
+        const input  = document.getElementById('url-input').value;
+        const output = document.getElementById('url-output');
+        hideError('url-error');
+        try {
+            output.value = action === 'encode'
+                ? encodeURIComponent(input)
+                : decodeURIComponent(input);
+        } catch {
+            output.value = '';
+            showError('url-error', 'Invalid URL-encoded string.');
+        }
+    }
+
+    // ── ROT13 ─────────────────────────────────────────────────────────
+    function runROT13() {
+        const input  = document.getElementById('rot13-input').value;
+        const output = document.getElementById('rot13-output');
+        output.value = input.replace(/[a-zA-Z]/g, c => {
+            const base = c <= 'Z' ? 65 : 97;
+            return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+        });
     }
 
     // ── Copy helper ───────────────────────────────────────────────────
@@ -193,10 +283,8 @@
 
         document.addEventListener('mousemove', function (e) {
             if (!dragging) return;
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
-            panel.style.left   = (origLeft + dx) + 'px';
-            panel.style.top    = (origTop  + dy) + 'px';
+            panel.style.left   = (origLeft + e.clientX - startX) + 'px';
+            panel.style.top    = (origTop  + e.clientY - startY) + 'px';
             panel.style.right  = 'auto';
             panel.style.bottom = 'auto';
         });
