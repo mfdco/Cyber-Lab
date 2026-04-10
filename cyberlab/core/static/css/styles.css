@@ -832,6 +832,8 @@
     background: #0a3d62;
     color: white;
     transition: background 0.15s;
+    border: none;
+    cursor: pointer;
 }
 
 .profile-action-btn:hover {
@@ -842,6 +844,134 @@
     background: #dfe7f1;
     color: #8395a7;
     pointer-events: none;
+}
+
+.profile-success-bar {
+    padding: 10px 22px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #1e7e34;
+    background: #d4edda;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ===== MODAL ===== */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background: #0f1923;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #8395a7;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.modal-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    color: #dfe7f1;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.modal-input:focus {
+    border-color: #f9ca24;
+}
+
+.modal-error {
+    font-size: 0.82rem;
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.modal-cancel-btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: #8395a7;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.modal-cancel-btn:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+.modal-submit-btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #0a3d62;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.modal-submit-btn:hover {
+    background: #07406e;
+}
+
+.modal-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 /* ===== CHALLENGE PAGE ===== */

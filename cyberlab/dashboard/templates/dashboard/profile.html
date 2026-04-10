@@ -94,7 +94,10 @@
                                 <span class="profile-label">Password</span>
                                 <p class="profile-sublabel">Passwords are encrypted and cannot be displayed.</p>
                             </div>
-                            <a href="#" class="profile-action-btn disabled-btn">Change Password</a>
+                            <button class="profile-action-btn" onclick="openPasswordModal()">Change Password</button>
+                        </div>
+                        <div id="password-success-bar" class="profile-success-bar" style="display:none;">
+                            Password updated successfully.
                         </div>
                     </div>
                 </div>
@@ -103,7 +106,98 @@
         </main>
     </div>
 
+    <!-- Change Password Modal -->
+    <div id="password-modal-overlay" class="modal-overlay" onclick="closePasswordModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <h2 class="modal-title">Change Password</h2>
+            <form id="change-password-form" novalidate>
+                {% csrf_token %}
+                <div class="modal-field">
+                    <label class="modal-label" for="old_password">Current Password</label>
+                    <input class="modal-input" type="password" id="old_password" name="old_password" required>
+                </div>
+                <div class="modal-field">
+                    <label class="modal-label" for="new_password1">New Password</label>
+                    <input class="modal-input" type="password" id="new_password1" name="new_password1" required>
+                </div>
+                <div class="modal-field">
+                    <label class="modal-label" for="new_password2">Confirm New Password</label>
+                    <input class="modal-input" type="password" id="new_password2" name="new_password2" required>
+                </div>
+                <div id="modal-error" class="modal-error" style="display:none;"></div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-cancel-btn" onclick="closePasswordModal()">Cancel</button>
+                    <button type="submit" class="modal-submit-btn" id="modal-submit-btn">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     {% include 'tools/panel.html' %}
+
+    <script>
+        function openPasswordModal() {
+            document.getElementById('password-modal-overlay').classList.add('active');
+            document.getElementById('change-password-form').reset();
+            hideModalError();
+        }
+
+        function closePasswordModal(event) {
+            if (event && event.target !== document.getElementById('password-modal-overlay')) return;
+            document.getElementById('password-modal-overlay').classList.remove('active');
+        }
+
+        function hideModalError() {
+            const el = document.getElementById('modal-error');
+            el.style.display = 'none';
+            el.textContent = '';
+        }
+
+        function showModalError(message) {
+            const el = document.getElementById('modal-error');
+            el.textContent = message;
+            el.style.display = 'block';
+        }
+
+        document.getElementById('change-password-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            hideModalError();
+
+            const btn = document.getElementById('modal-submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Updating...';
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('{% url "change_password" %}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+                    },
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('password-modal-overlay').classList.remove('active');
+                    const bar = document.getElementById('password-success-bar');
+                    bar.style.display = 'block';
+                    setTimeout(() => { bar.style.display = 'none'; }, 4000);
+                } else {
+                    const errors = data.errors;
+                    const messages = Object.values(errors).flat().join(' ');
+                    showModalError(messages);
+                }
+            } catch {
+                showModalError('Something went wrong. Please try again.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Update Password';
+            }
+        });
+    </script>
 
 </body>
 </html>
