@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
@@ -30,6 +30,20 @@ class SignUpForm(UserCreationForm):
             raise forms.ValidationError("Password must be at least 8 characters long.")
 
         # Custom rule: not a common password
+        common_passwords = ["password", "12345678", "qwerty", "letmein", "abc123", "admin"]
+        if password.lower() in common_passwords:
+            raise forms.ValidationError("Password is too common. Choose a stronger one.")
+
+        return password
+
+
+class ChangePasswordForm(PasswordChangeForm):
+    def clean_new_password1(self):
+        password = self.cleaned_data.get("new_password1")
+
+        if len(password) < 8:
+            raise forms.ValidationError("Password must be at least 8 characters long.")
+
         common_passwords = ["password", "12345678", "qwerty", "letmein", "abc123", "admin"]
         if password.lower() in common_passwords:
             raise forms.ValidationError("Password is too common. Choose a stronger one.")

@@ -28,7 +28,7 @@ class AuthTests(TestCase):
             {"username": "connor2", "password": "password"},
         )
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse("account"))
+        self.assertRedirects(response, reverse("dashboard"))
 
     def test_account_needs_login(self):
         response = self.client.get(reverse("account"))
@@ -48,3 +48,26 @@ class AuthTests(TestCase):
         data = response.json()
         self.assertEqual(data["username"], "connor3")
         self.assertEqual(data["email"], "connor3@example.com")
+
+    def test_change_password(self):
+        user = User.objects.create_user(
+            username="connor4",
+            email="connor4@example.com",
+            password="Oldpass123",
+        )
+        self.client.force_login(user)
+
+        response = self.client.post(
+            reverse("change_password"),
+            {
+                "old_password": "Oldpass123",
+                "new_password1": "Newpass123",
+                "new_password2": "Newpass123",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["success"], True)
+
+        self.client.logout()
+        self.assertTrue(self.client.login(username="connor4", password="Newpass123"))
