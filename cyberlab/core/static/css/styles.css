@@ -1052,6 +1052,14 @@
     font-size: 0.88rem;
 }
 
+.challenge-puzzle_content p {
+    color: #dfe7f1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
 .challenge-body-card,
 .challenge-submit-card {
     background: rgba(255,255,255,0.05);
