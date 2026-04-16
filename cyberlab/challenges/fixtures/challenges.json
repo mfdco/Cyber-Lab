@@ -1,0 +1,152 @@
+[
+{
+  "model": "challenges.problems",
+  "pk": 1,
+  "fields": {
+    "problem_title": "Intro to CyberSec",
+    "section": "Beginner",
+    "problem_number": 1,
+    "description": "Welcome to your first challenge! Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. In this challenge, you will locate a hidden flag that has been placed in plain sight. Flags follow the format flag{...}.\r\n\r\nEvery security professional needs to recognise when something is hiding in plain sight. The flag for this challenge has been encoded in the description below. Read carefully, then click Reveal Flag when you are ready to confirm your answer.",
+    "puzzle_content": "Th1s platform was built for people who look closer than everyone else. Every skill you build here 1s another layer of armour. Never underestimate th3 value of reading carefully; most attackers hide their work in plain text. The analyst who spots the f1rs7 anomaly in a log is the one who stops the breach. A sharp eye never misses a FlA6 when it is hiding right in front of them.",
+    "hints": "Look at the words that are written uniquely!",
+    "downloadable_file": "",
+    "hashed_flags": "pbkdf2_sha256$1200000$68cr3pwyVxw8VJstjLmp6X$VyAJMxFQa0WT3M6tYpxAYisb/tjll5JCH1QsarmJLUo=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 2,
+  "fields": {
+    "problem_title": "Ciphers",
+    "section": "Beginner",
+    "problem_number": 2,
+    "description": "During an investigation, analysts intercepted a strange message. \r\nIt doesn’t appear to be encrypted using a traditional cipher, but the \r\npattern suggests it may be encoded.\r\n\r\nCan you recover the hidden flag from the intercepted message?",
+    "puzzle_content": "Intercepted transmission:\r\n\r\nZmxhZ3tiYXNlXzY0X3ZlcnlfZWFzeX0=\r\n\r\nAnalysts believe the message is encoded rather than encrypted.",
+    "hints": "Look which which ciper can end with a double or single \"=\"",
+    "downloadable_file": "",
+    "hashed_flags": "pbkdf2_sha256$1200000$b4BeXB1XMn7oNATs7DomlQ$9piKImiA+bExDGwP6x4h9kOdvewThZP2t/6Dt0HHZUQ=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 3,
+  "fields": {
+    "problem_title": "Behind the Curtin",
+    "section": "Beginner",
+    "problem_number": 3,
+    "description": "This problem is meant to teach you that sometimes the answer to some problems lies behind what you can see.",
+    "puzzle_content": "I made a flag and then took a note of it somewhere on the page, but it doesn't seem to be here. Where else could it be?",
+    "hints": "Source of the page",
+    "downloadable_file": "",
+    "hashed_flags": "pbkdf2_sha256$1200000$ZGC6k6PcihxgwbyWFX7Q9g$RHmA2oJ/QezaO+zq+KEDXwkGA7CW4NY+e4kmxlz9clg=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 4,
+  "fields": {
+    "problem_title": "Italians did this?",
+    "section": "Beginner",
+    "problem_number": 4,
+    "description": "Here, you learn how to use a Caesar cipher and decode its messages.",
+    "puzzle_content": "This message was intercepted from an ancient source. Looks unreadable, but something feels off. Maybe a shift will help to understand it completely.\r\n\r\nKhoor, wklv lv brxu iodj: iodj{fdhvdu_lv_fodvvlf}",
+    "hints": "uno due tre",
+    "downloadable_file": "",
+    "hashed_flags": "pbkdf2_sha256$1200000$qVQUKliMAEElNK3Ofx2RfE$NQiEQdmVLbEBvOyNHNP3yDpSkJ9w3FjDjCf8oVeaWCM=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 5,
+  "fields": {
+    "problem_title": "Png or Not Png",
+    "section": "Intermediate",
+    "problem_number": 5,
+    "description": "This problem is going to teach you that some things aren't what they seem, and ways to access them.",
+    "puzzle_content": "Here's an image file, but it won't open. Perhaps it's not what it claims to be, try to find another way to open the file.",
+    "hints": "File extension is lying, it looks like it's compressed. Also use your terminal.",
+    "downloadable_file": "challenge_files/file.png",
+    "hashed_flags": "pbkdf2_sha256$1200000$ri0nrWHPOAQCCEGKrGTABq$imCcvf/utq+APLMBbxAxftD7krZaMvBowozk1GMS2Ig=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 6,
+  "fields": {
+    "problem_title": "step yep blep",
+    "section": "Intermediate",
+    "problem_number": 6,
+    "description": "This challenge is going to show the power of string searching and a little bit of reverse engineering.",
+    "puzzle_content": "I made a program with the flag inside of it; however, it can be opened. There must be a way to search for it!",
+    "hints": "Try using grep and strings",
+    "downloadable_file": "challenge_files/challenge_IOmqcxd.pyc",
+    "hashed_flags": "pbkdf2_sha256$1200000$d2OZTmEXE4jsqIShQGKtoA$HgM+PtaZThx/Bjx6LDvEWIZaxScQfJWS+Z6OAy5+SNY=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 7,
+  "fields": {
+    "problem_title": "Layers on Layers",
+    "section": "Intermediate",
+    "problem_number": 7,
+    "description": "This problem shows you how strong encryption can be done through layers.",
+    "puzzle_content": "You have found a message, but it looks like someone didn't rest just one method of hiding it. It seems to be encoded with more than encryption. Can you peel back the layers?\r\n\r\nZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNjZGNtZQNkZGNkZQRtZQNkZGNjZQNtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGRtZQNkZGRjZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGRtZQNkZGNjZGNtZQNkZGNkZGRtZQNkZGNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGRtZQNkZGNkZQNtZQNkZGNkZGNtZQRjZQNkZGNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGRjZQRtZQNkZGNkZGNtZQRjZQNkZQRtZQNkZGNkZGNtZQNkZGNkZQNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNkZQN%3Q",
+    "hints": "R U H B B",
+    "downloadable_file": "",
+    "hashed_flags": "pbkdf2_sha256$1200000$zZ5Yz7H5oMhHrNrDJ4jUpU$rG0GJP3aOf2JhIAcGxpkY58lYe3jIuMB2ZeW6nqDiUg=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 8,
+  "fields": {
+    "problem_title": "Bypass Login",
+    "section": "Advanced",
+    "problem_number": 8,
+    "description": "This problem will teach you the power of SQL injection and poorly written code.",
+    "puzzle_content": "A login portal protects access to sensitive data. You don't have the credentials, but you may not need them. Maybe we inject something into it?",
+    "hints": "Try using admin' -- in username",
+    "downloadable_file": "challenge_files/app.pyc",
+    "hashed_flags": "pbkdf2_sha256$1200000$wi6uM7cgibDVWk5y4PGNOA$vZCeLCBzNTSZkLKcaYl104X6mJNLMHji395gW6vQHG4=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 9,
+  "fields": {
+    "problem_title": "Hidden Image",
+    "section": "Advanced",
+    "problem_number": 9,
+    "description": "Similar to a previous problem, but this time it is an actual image.",
+    "puzzle_content": "The image looks normal at first glance, but sometimes, what you see is not all there is. Uncover what is beneath the image.",
+    "hints": "Use strings and binwalk",
+    "downloadable_file": "challenge_files/image.png",
+    "hashed_flags": "pbkdf2_sha256$1200000$taHMU9Fj0wCT0vLYttlziN$Itwb0S+Mi2LY1JDdyshV+o8ezJMTv464zGJ9ZQKVdfM=",
+    "flag": ""
+  }
+},
+{
+  "model": "challenges.problems",
+  "pk": 10,
+  "fields": {
+    "problem_title": "Broken Authentication",
+    "section": "Advanced",
+    "problem_number": 10,
+    "description": "This problem shows how you can pass in inputs in the URL if there are underlying issues.",
+    "puzzle_content": "You've found an API endpoint that returns users' data. It requires a token, but it seems like it can be accessed quite simply. Can you figure it out?",
+    "hints": "Try \"token=user\" and think who has access to all things",
+    "downloadable_file": "challenge_files/api_challenge.pyc",
+    "hashed_flags": "pbkdf2_sha256$1200000$Ln1dYfZztyPjprfmnsb96j$luYP0ZGW7ZzidkkUQUciuQfqOA65gtuu+mLzOUO6r34=",
+    "flag": ""
+  }
+}
+]
