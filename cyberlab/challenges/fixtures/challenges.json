@@ -98,7 +98,7 @@
     "problem_number": 7,
     "description": "This problem shows you how strong encryption can be done through layers.",
     "puzzle_content": "You have found a message, but it looks like someone didn't rest just one method of hiding it. It seems to be encoded with more than encryption. Can you peel back the layers?\r\n\r\nZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNjZGNtZQNkZGNkZQRtZQNkZGNjZQNtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGRtZQNkZGRjZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGRtZQNkZGNjZGNtZQNkZGNkZGRtZQNkZGNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGRtZQNkZGNkZQNtZQNkZGNkZGNtZQRjZQNkZGNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGRjZQRtZQNkZGNkZGNtZQRjZQNkZQRtZQNkZGNkZGNtZQNkZGNkZQNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNkZQN%3Q",
-    "hints": "R U H B B",
+    "hints": "R U B B H",
     "downloadable_file": "",
     "hashed_flags": "pbkdf2_sha256$1200000$zZ5Yz7H5oMhHrNrDJ4jUpU$rG0GJP3aOf2JhIAcGxpkY58lYe3jIuMB2ZeW6nqDiUg=",
     "flag": ""
