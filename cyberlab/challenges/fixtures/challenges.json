@@ -52,10 +52,10 @@
     "section": "Beginner",
     "problem_number": 4,
     "description": "Here, you learn how to use a Caesar cipher and decode its messages.",
-    "puzzle_content": "This message was intercepted from an ancient source. Looks unreadable, but something feels off. Maybe a shift will help to understand it completely.\r\n\r\nKhoor, wklv lv brxu iodj: iodj{fdhvdu_lv_fodvvlf}",
-    "hints": "uno due tre",
+    "puzzle_content": "This message was intercepted from an ancient source. Looks unreadable, but something feels off. Maybe a shift will help to understand it completely.\r\n\r\nUryyb, guvf vf lbhe synt: synt{pnrfne_vf_pynffvp}",
+    "hints": "tredici",
     "downloadable_file": "",
-    "hashed_flags": "pbkdf2_sha256$1200000$qVQUKliMAEElNK3Ofx2RfE$NQiEQdmVLbEBvOyNHNP3yDpSkJ9w3FjDjCf8oVeaWCM=",
+    "hashed_flags": "pbkdf2_sha256$1200000$VZZHBDYEJIzXo7Af9tRmUX$RATLTDMpbUduhSOlW00PpK/4NyrAMbEZc9A93Daqv+c=",
     "flag": ""
   }
 },
@@ -70,7 +70,7 @@
     "puzzle_content": "Here's an image file, but it won't open. Perhaps it's not what it claims to be, try to find another way to open the file.",
     "hints": "File extension is lying, it looks like it's compressed. Also use your terminal.",
     "downloadable_file": "challenge_files/file.png",
-    "hashed_flags": "pbkdf2_sha256$1200000$ri0nrWHPOAQCCEGKrGTABq$imCcvf/utq+APLMBbxAxftD7krZaMvBowozk1GMS2Ig=",
+    "hashed_flags": "pbkdf2_sha256$1200000$ehzltYuyl0EF3JJKLk3mOx$gvcg+BiLWSQbpqebeXCI1OhaeNfW6NRsC4xRhqppsNg=",
     "flag": ""
   }
 },
@@ -97,10 +97,10 @@
     "section": "Intermediate",
     "problem_number": 7,
     "description": "This problem shows you how strong encryption can be done through layers.",
-    "puzzle_content": "You have found a message, but it looks like someone didn't rest just one method of hiding it. It seems to be encoded with more than encryption. Can you peel back the layers?\r\n\r\nZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNjZGNtZQNkZGNkZQRtZQNkZGNjZQNtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGRtZQNkZGRjZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGRtZQNkZGNjZGNtZQNkZGNkZGRtZQNkZGNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGRtZQNkZGNkZQNtZQNkZGNkZGNtZQRjZQNkZGNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGRjZQRtZQNkZGNkZGNtZQRjZQNkZQRtZQNkZGNkZGNtZQNkZGNkZQNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNkZQN%3Q",
+    "puzzle_content": "You have found a message, but it looks like someone didn't use just one method of hiding it. It seems to be encoded with more than encryption. Can you peel back the layers?\r\n\r\nZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNjZGNtZQNkZGNkZQRtZQNkZGNjZQNtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGRtZQNkZGRjZQRtZQNkZGNkZGNtZQNkZGNkZQRtZQNkZGNkZGRtZQNkZGNjZGNtZQNkZGNkZGRtZQNkZGNjZGRtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGRtZQNkZGNkZQNtZQNkZGNkZGNtZQRjZQNkZGNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGRjZQRtZQNkZGNkZGNtZQRjZQNkZQRtZQNkZGNkZGNtZQNkZGNkZQNtZQNkZGNkZQRtZQRjZQNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQNkZGNkZGNtZQRjZQNjZGRtZQNkZGNkZGNtZQNkZGNjZQRtZQNkZGNkZGNtZQNkZGNkZGRtZQNkZGNkZGRtZQRjZQNkZQN%3Q",
     "hints": "R U B B H",
     "downloadable_file": "",
-    "hashed_flags": "pbkdf2_sha256$1200000$zZ5Yz7H5oMhHrNrDJ4jUpU$rG0GJP3aOf2JhIAcGxpkY58lYe3jIuMB2ZeW6nqDiUg=",
+    "hashed_flags": "pbkdf2_sha256$1200000$2B5dTMHP6DRFECEiLFqMQp$sjkYtYHLWGkxBTH5QkONT7O/V1x0RUoqeMR/PUXPKSM=",
     "flag": ""
   }
 },
