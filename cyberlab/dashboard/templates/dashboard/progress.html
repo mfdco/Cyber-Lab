@@ -23,22 +23,7 @@
     <div class="dashboard-layout">
 
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <a href="{% url 'dashboard' %}" class="sidebar-link">
-                    <span class="sidebar-icon">&#128506;</span> Learning Paths
-                </a>
-                <a href="#" class="sidebar-link tools-toggle" onclick="toggleToolsPanel(); return false;">
-                    <span class="sidebar-icon">&#128295;</span> Tools
-                </a>
-                <a href="{% url 'progress' %}" class="sidebar-link active">
-                    <span class="sidebar-icon">&#128200;</span> Progress
-                </a>
-                <a href="{% url 'profile' %}" class="sidebar-link">
-                    <span class="sidebar-icon">&#128100;</span> Profile
-                </a>
-            </nav>
-        </aside>
+        {% include 'dashboard/includes/sidebar.html' %}
 
         <main class="dashboard-main">
             <div class="progress-container">

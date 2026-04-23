@@ -18,6 +18,7 @@ def dashboard_view(request):
         'user': request.user,
         'problems': problems,
         'solved_ids': solved_ids,
+        'active_tab': 'dashboard',
     })
 
 
@@ -25,7 +26,7 @@ def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    return render(request, 'dashboard/profile.html', {'user': request.user})
+    return render(request, 'dashboard/profile.html', {'user': request.user, 'active_tab': 'profile'})
 
 
 def progress_view(request):
@@ -69,4 +70,5 @@ def progress_view(request):
         'percent': percent,
         'circumference': circumference,
         'dashoffset': dashoffset,
+        'active_tab': 'progress',
     })
