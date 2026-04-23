@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from challenges.models import Submission, Problems
-from itertools import groupby
 
 
 def dashboard_view(request):
