@@ -32,7 +32,11 @@ def progress_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    all_problems = Problems.objects.all().order_by('section', 'problem_number')
+    section_order = {'Beginner': 0, 'Intermediate': 1, 'Advanced': 2}
+    all_problems = sorted(
+        Problems.objects.all().order_by('problem_number'),
+        key=lambda p: section_order.get(p.section, 99)
+    )
 
     solved_ids = set(
         Submission.objects.filter(user=request.user, correct=True)
@@ -49,7 +53,7 @@ def progress_view(request):
             'solved': problem.id in solved_ids,
         })
 
-    total = all_problems.count()
+    total = len(all_problems)
     solved_count = len(solved_ids)
     percent = int((solved_count / total) * 100) if total > 0 else 0
 
